@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{user.imageUrl}}" alt="avatar-img">
+        </div>
+        <div class="col-md-6">
+            <p><strong>Nombre de usuario: </strong>{{user.username}}</p>
+            <p><strong>E-mail: </strong>{{user.email}}</p>
+            <p><strong>Fecha de nacimiento: </strong>{{user.birthday}}</p>
+            <p><strong>Descripción: </strong>{{user.description}}</p>
+            <p><strong>Rol: </strong>{{user.role}}</p>
+            <p><strong>Personajes favoritos: </strong></p>
+            {{#each favCharacters}}
+            {{/each}}
+        </div>
+    </div>
+</div>
