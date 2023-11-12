@@ -1,11 +1,18 @@
-<div class="container">
-    {{#each users}}
-    <div class="card" style="width: 18rem;">
-        <img src="{{imageUrl}}" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">{{username}}</h5>
-            <a href="/usuario/{{id}}" class="btn btn-primary">Ir al perfil</a>
+<div class="listBg text-center">
+    <div class="container pt-5">
+        <h2 style="background-color: black; color: red;">Lista de usuarios</h2>
+        <div class="row">
+            {{#each users}}
+            <div class="col-md-4 d-flex justify-content-center text-center">
+                <div class="card mt-5" style="width: 18rem;">
+                    <img src="{{imageUrl}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{username}}</h5>
+                        <a href="/usuario/{{id}}" class="btn btn-dark">Ir al perfil</a>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
         </div>
     </div>
-    {{/each}}
 </div>

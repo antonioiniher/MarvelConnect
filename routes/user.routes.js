@@ -2,30 +2,24 @@ const express = require('express')
 const router = express.Router()
 
 const User = require('./../models/User.model')
+const { isLoggedIn, checkOwnerOr } = require('../middleware/route-guard')
 
-router.get('/perfil', (req, res, next) => {
-
-    res.render('user/your-profile', { user: req.session.currentUser })
-
-})
-
-router.get('/lista', (req, res, next) => {
+router.get('/lista', isLoggedIn, (req, res, next) => {
 
     User
         .find()
-        .then(users => res.render('user/list', { users }))
+        .then(users => res.render('user/list', { users, isLogged: req.session.currentUser, isLoggedOut: !req.session.currentUser }))
         .catch(err => next(err))
 
 })
 
-
-router.get('/:user_id', (req, res, next) => {
+router.get('/:user_id', isLoggedIn, (req, res, next) => {
 
     const { user_id } = req.params
 
     User
         .findById(user_id)
-        .then(user => res.render('user/profile'))
+        .then(user => res.render('user/profile', { user, isLogged: req.session.currentUser, isLoggedOut: !req.session.currentUser }))
         .catch(err => next(err))
 
 })

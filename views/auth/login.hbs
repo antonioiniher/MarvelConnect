@@ -1,26 +1,36 @@
-<div class="container">
-    <h1>Bienvenido a {{appTitle}}</h1>
-    <hr>
-    <h4>Iniciar sesión</h4>
-    <form action="/usuario/inicio-sesion" method="post">
-        <div class="mb-3">
-            <label for="email" class="form-label">Dirección de e-mail</label>
-            <input type="email" class="form-control" id="email" name="email">
-            <div id="emailHelp" class="form-text">Nunca compartiremos tu e-mail</div>
-        </div>
-        <div class="mb-3">
-            <label for="password" class="form-label">Contraseña</label>
-            <input type="password" class="form-control" id="password" name="password">
-        </div>
-        <button type="submit" class="btn btn-dark">Iniciar sesión</button>
-    </form>
+<div class="loginPage">
+    <div class="container pt-5 text-center fondoblanco">
+        <div class="row d-flex justify-content-center">
+            <div class="col-6">
+                <h1>Bienvenido a {{appTitle}}</h1>
+                <hr>
+                <h2>Iniciar sesión</h2>
+                <form action="/usuario/inicio-sesion" method="post" class="pt-5">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Dirección de e-mail</label>
+                        <input type="email" class="form-control" id="email" name="email">
+                        <div id="emailHelp" class="form-text">Nunca compartiremos tu e-mail</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label pt-3">Contraseña</label>
+                        <input type="password" class="form-control" id="password" name="password">
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-dark">Iniciar sesión</button>
+                    </div>
+                </form>
 
-    {{#if errorMessage}}
-    <p id="error">{{errorMessage}}</p>
-    {{/if}}
+                {{#if errorMessage}}
+                <p id="error">{{errorMessage}}</p>
+                {{/if}}
 
-    <div class="mb-3">
-        <p>¿No tienes cuenta todavia?</p>
-        <a href="/usuario/registro" class="btn btn-dark">Registrate aquí</a>
+                <div class="mb-3 pt-5 pb-5">
+                    <p>¿No tienes cuenta todavia?</p>
+                    <div class="d-grid gap-2">
+                        <a href="/usuario/registro" class="btn btn-dark">Registrate aquí</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

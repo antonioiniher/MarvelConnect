@@ -7,7 +7,7 @@ const app = express()
 require("./config")(app)
 require('./config/session.config')(app)
 
-app.locals.appTitle = 'Disney project'
+app.locals.appTitle = 'Marvel connect'
 
 require('./routes')(app)
 require("./error-handling")(app)

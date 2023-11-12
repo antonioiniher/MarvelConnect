@@ -1,5 +1,33 @@
 body {
-  font-family: sans-serif;
+  font-family: 'Marvel', sans-serif;
+}
+
+.homePage {
+  background-image: url(./../images/marvel.webp);
+  height: 93vh;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.loginPage {
+  background-image: url(./../images/fondo.jpeg);
+  height: 95vh;
+  background-size: contain;
+  background-position: center;
+}
+
+.fondoblanco {
+  background-color: #ECE1B4;
+  width: 55%;
+  height: 94vh;
+}
+
+.homePage h1 {
+  font-size: 8em;
+  padding-top: 50px;
+  padding-bottom: 150px;
+  color: #FDBB31;
 }
 
 #error {
@@ -13,4 +41,24 @@ body {
   height: 150px;
   object-fit: cover;
   object-position: top;
+}
+
+.nav-item a {
+  color: #F00004;
+  font-size: 1.5em;
+}
+
+.homeCard h5,
+.homeCard p,
+.homeCard a {
+  font-size: 1.6em;
+  color: #F00004;
+}
+
+.listBg {
+  background-image: url(./../images/marvelfondo2.jpeg);
+}
+
+.profile img {
+  width: 100%;
 }

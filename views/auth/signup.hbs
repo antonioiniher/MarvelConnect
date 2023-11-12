@@ -1,25 +1,57 @@
-<h1>Formulario de registro</h1>
-<form action="/usuario/registro" method="POST">
-
-    <label for="username">Nombre de usuario</label>
-    <input type="text" id="username" name="username">
-
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email">
-
-    <label for="password">Contraseña</label>
-    <input type="password" id="password" name="plainPassword">
-
-    <label for="imageUrl">Imagen</label>
-    <input type="text" id="imageUrl" name="imageUrl">
-
-    <label for="birthday">Fecha de nacimiento</label>
-    <input type="date" id="birthday" name="birthday">
-
-    <label for="description">Descripción</label>
-    <input type="text" id="description" name="description">
+<div class="loginPage">
+    <div class="container text-center fondoblanco">
+        <div class="row d-flex justify-content-center">
+            <h1>Registrate!</h1>
+            <div class="col-md-6">
+                <form action="/usuario/registro" method="POST">
 
 
-    <button type="submit">Registrarme</button>
+                    <div class="mb-3">
+                        <label for="imageUrl" class="form-label">Foto de Perfil</label>
+                        <div class="row">
+                            <div class="col-md-6 d-flex justify-content-center align-items-center">
+                                <input type="text" class="form-control" id="imageUrl"
+                                    placeholder="Introduce un nombre" />
+                                <input type="hidden" id="hidden-input" value="" name="imageUrl" />
+                            </div>
+                            <div class="col-md-6 d-flex justify-content-center">
+                                <div id="show-container"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Nombre de usuario</label>
+                        <input type="text" class="form-control" id="username" name="username">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="password" name="plainPassword"></input>
+                    </div>
 
-</form>
+                    <div class="mb-3">
+                        <label for="birthday" class="form-label">Fecha de nacimiento</label>
+                        <input type="date" class="form-control" id="birthday" name="birthday">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Descripción!</label>
+                        <textarea class="form-control" id="description" name="description"></textarea>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-dark">Registrarse</button>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/js/avatar-script.js"></script>
