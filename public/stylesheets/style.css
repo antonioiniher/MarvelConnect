@@ -59,6 +59,11 @@ body {
   background-image: url(./../images/marvelfondo2.jpeg);
 }
 
+.profile {
+  background-image: url(./../images/marvelfondo.jpeg);
+  font-size: 1.7em;
+}
+
 .profile img {
   width: 100%;
 }

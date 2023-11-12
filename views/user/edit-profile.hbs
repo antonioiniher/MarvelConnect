@@ -1,1 +1,48 @@
-<h1>mi perfil editar</h1>
+<div class="profile">
+    <div class="container text-center fondoblanco">
+        <div class="row d-flex justify-content-center">
+            <h1>Editar Perfil</h1>
+            <div class="col-md-6">
+                <form action="/usuario/{{id}}/editar" method="POST">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Nombre de usuario</label>
+                        <input type="text" class="form-control" id="username" name="username" value="{{username}}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" value="{{email}}"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="imageUrl" class="form-label">Foto de Perfil</label>
+                        <div class="row">
+                            <div class="col-md-6 d-flex justify-content-center align-items-center">
+                                <input type="text" class="form-control" id="imageUrl"
+                                    placeholder="Introduce un nombre" />
+                                <input type="hidden" id="hidden-input" value="" name="imageUrl" />
+                            </div>
+                            <div class="col-md-6 d-flex justify-content-center">
+                                <div id="show-container"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="birthday" class="form-label">Fecha de nacimiento</label>
+                        <input type="date" class="form-control" id="birthday" name="birthday" value="{{birthday}}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Descripción!</label>
+                        <textarea class="form-control" id="description" name="description">{{description}}</textarea>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-dark">Editar Perfil</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/js/avatar-script.js"></script>

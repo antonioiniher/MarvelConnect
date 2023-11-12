@@ -1,17 +1,26 @@
-<div class="container profile">
-    <div class="row">
-        <div class="col-md-6">
-            <img src="{{user.imageUrl}}" alt="avatar-img">
+<div class="profile">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-6">
+                <img src="{{user.imageUrl}}" alt="{{user.username}}-img">
+            </div>
+            <div class="col-md-6">
+                <p><strong>Nombre de usuario: </strong>{{user.username}}</p>
+                <p><strong>E-mail: </strong>{{user.email}}</p>
+                <p><strong>Fecha de nacimiento: </strong>{{user.birthday}}</p>
+                <p><strong>Descripción: </strong>{{user.description}}</p>
+                <p><strong>Rol: </strong>{{user.role}}</p>
+                <p><strong>Personajes favoritos: </strong></p>
+                {{#each favCharacters}}
+                {{/each}}
+            </div>
         </div>
-        <div class="col-md-6">
-            <p><strong>Nombre de usuario: </strong>{{user.username}}</p>
-            <p><strong>E-mail: </strong>{{user.email}}</p>
-            <p><strong>Fecha de nacimiento: </strong>{{user.birthday}}</p>
-            <p><strong>Descripción: </strong>{{user.description}}</p>
-            <p><strong>Rol: </strong>{{user.role}}</p>
-            <p><strong>Personajes favoritos: </strong></p>
-            {{#each favCharacters}}
-            {{/each}}
-        </div>
+
+        <a href="/usuario/{{user._id}}/editar" class="btn btn-dark">Editar perfil</a>
+
+        <form action="/usuario/{{user._id}}/eliminar" method="POST">
+            <button type="submit" class="btn btn-dark">Eliminar perfil</button>
+        </form>
+
     </div>
 </div>
