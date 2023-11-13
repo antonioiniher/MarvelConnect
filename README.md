@@ -1,11 +1,11 @@
 # module2-project
 
-| METHOD | PATH                   | DESCRIPTION                                    | JSON |
-|--------|------------------------|------------------------------------------------|------|
-| GET    |/                       | Página principal                               |      | -
-| GET    |/usuario/registro       | Página para registro                           |      | -
-| POST   |/usuario/registro       | Post del registro a la DB                      |      | -
-| GET    |/usuario/inicio-sesion  | Página para iniciar sesión                     |      | -
+| METHOD | PATH                     | DESCRIPTION                                    | JSON |
+|--------|--------------------------|------------------------------------------------|------|
+| GET    |`/`                       | Página principal                               |      | -
+| GET    |`/usuario/registro`       | Página para registro                           |      | -
+| POST   |`/usuario/registro`       | Post del registro a la DB                      |      | -
+| GET    |`/usuario/inicio-sesion`  | Página para iniciar sesión                     |      | -
 | POST   |`/usuario/inicio-sesion`  | Post del inicio de sesión a la DB              |      | -
 | GET    |`/usuario/cerrar-sesion`  | Página para cerrar sesión                      |      | -
 | GET    |`/usuario/lista`          | Página para ver la lista de usuarios           |      | -
@@ -24,5 +24,5 @@
 | GET    |`/eventos/:_id/editar`    | Página para editar eventos                     |      |
 | POST   |`/eventos/:_id/editar`    | Post de la edición del evento a la DB          |      |
 | GET    |`/eventos/:_id/eliminar`  | Eliminación de eventos                         |      |
-| GET    |`/api/events`             | Mapa para eventos                              |  SI  |
-| GET    |`/api/events/:_id`        | Mapa para detalle de evento                    |  SI  |
+| GET    |`/api/events`             | Mapa para eventos                              |  ✅  |
+| GET    |`/api/events/:_id`        | Mapa para detalle de evento                    |  ✅  |
