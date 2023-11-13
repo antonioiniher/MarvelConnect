@@ -12,4 +12,7 @@ module.exports = app => {
     const userRoutes = require('./user.routes')
     app.use('/usuario', userRoutes)
 
+    const eventRoutes = require('./event.routes')
+    app.use('/eventos', eventRoutes)
+
 }
