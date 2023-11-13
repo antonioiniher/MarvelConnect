@@ -19,15 +19,18 @@ const eventSchema = new Schema(
             type: Date,
             required: true
         },
-        description: String,
+        description: {
+            type: String,
+            minLength: 10
+        },
         creator: {
             type: Schema.Types.ObjectId,
             ref: 'User'
         },
-        participants: {
+        participants: [{
             type: Schema.Types.ObjectId,
             ref: 'User'
-        }
+        }]
     },
     {
         timestamps: true

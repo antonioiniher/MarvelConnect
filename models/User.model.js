@@ -6,7 +6,6 @@ const userSchema = new Schema(
       type: String,
       trim: true,
       required: true,
-      unique: true
     },
     email: {
       type: String,
@@ -19,9 +18,17 @@ const userSchema = new Schema(
       type: String,
       required: true
     },
-    imageUrl: String,
-    birthday: Date,
-    description: String,
+    imageUrl: {
+      type: String,
+      required: true
+    },
+    birthday: {
+      type: Date,
+    },
+    description: {
+      type: String,
+      maxLength: 80
+    },
     role: {
       type: String,
       enum: ['USER', 'CREATOR', 'ADMIN'],
