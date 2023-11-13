@@ -4,8 +4,18 @@
             <h1>Registrate!</h1>
             <div class="col-md-6">
                 <form action="/usuario/registro" method="POST">
-
-
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Nombre de usuario</label>
+                        <input type="text" class="form-control" id="username" name="username">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="password" name="plainPassword"></input>
+                    </div>
                     <div class="mb-3">
                         <label for="imageUrl" class="form-label">Foto de Perfil</label>
                         <div class="row">
@@ -19,19 +29,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="username" class="form-label">Nombre de usuario</label>
-                        <input type="text" class="form-control" id="username" name="username">
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email"></input>
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" id="password" name="plainPassword"></input>
-                    </div>
-
                     <div class="mb-3">
                         <label for="birthday" class="form-label">Fecha de nacimiento</label>
                         <input type="date" class="form-control" id="birthday" name="birthday">

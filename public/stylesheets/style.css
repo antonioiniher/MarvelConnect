@@ -4,15 +4,14 @@ body {
 
 .homePage {
   background-image: url(./../images/marvel.webp);
-  height: 93vh;
+  height: 90vh;
   background-size: cover;
-  background-position: center;
-  overflow: hidden;
+  background-position-y: -20vh;
 }
 
 .loginPage {
   background-image: url(./../images/fondo.jpeg);
-  height: 95vh;
+  height: 100vh;
   background-size: contain;
   background-position: center;
 }
@@ -20,12 +19,12 @@ body {
 .fondoblanco {
   background-color: #ECE1B4;
   width: 55%;
-  height: 94vh;
+  height: 100vh;
 }
 
 .homePage h1 {
   font-size: 8em;
-  padding-top: 50px;
+  font-weight: bolder;
   padding-bottom: 150px;
   color: #FDBB31;
 }
