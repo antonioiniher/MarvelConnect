@@ -19,7 +19,12 @@ class MarvelService {
         return this.axiosApp.get(`/characters?nameStartsWith=${name}&ts=${timestamp}&apikey=${apiKey}&hash=${hashValue}`)
     }
 
+    getCharacterBySerie(serie) {
+        return this.axiosApp.get(`/series?titleStartsWith=${serie}&ts=${timestamp}&apikey=${apiKey}&hash=${hashValue}`)
+    }
+
 }
+
 
 
 

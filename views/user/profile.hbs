@@ -11,7 +11,8 @@
                 <p><strong>Descripción: </strong>{{user.description}}</p>
                 <p><strong>Rol: </strong>{{user.role}}</p>
                 <p><strong>Personajes favoritos: </strong></p>
-                {{#each favCharacters}}
+                {{#each user.favCharacters}}
+                <p>{{this}}</p>
                 {{/each}}
             </div>
         </div>
