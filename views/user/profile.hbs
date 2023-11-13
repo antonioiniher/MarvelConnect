@@ -1,7 +1,7 @@
 <div class="profile">
-    <div class="container">
+    <div class="container pt-5 fondoblanco">
         <div class="row d-flex justify-content-center">
-            <div class="col-md-6">
+            <div class="col-md-6 text-center pt-3">
                 <img src="{{user.imageUrl}}" alt="{{user.username}}-img">
             </div>
             <div class="col-md-6">
@@ -15,12 +15,18 @@
                 {{/each}}
             </div>
         </div>
-
-        <a href="/usuario/{{user._id}}/editar" class="btn btn-dark">Editar perfil</a>
-
-        <form action="/usuario/{{user._id}}/eliminar" method="POST">
-            <button type="submit" class="btn btn-dark">Eliminar perfil</button>
-        </form>
-
+        <div class="text-center pt-5">
+            {{#if isAdmin}}
+            <a href="/usuario/{{user._id}}/editar" class="btn btn-dark">Editar perfil</a>
+            <form action="/usuario/{{user._id}}/eliminar" method="POST">
+                <button type="submit" class="btn btn-dark">Eliminar perfil</button>
+            </form>
+            {{/if}}
+            {{#if isOwner}}
+            <a href="/usuario/{{user._id}}/editar" class="btn btn-dark">Editar perfil</a>
+            {{/if}}
+        </div>
     </div>
 </div>
+
+<script src="/utils/date.js"></script>
