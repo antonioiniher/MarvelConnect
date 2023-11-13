@@ -7,7 +7,7 @@ const User = require("../models/User.model")
 router.get("/", (req, res, next) => {
     Event
         .find()
-        .then(events => res.render("events/list", { events }))
+        .then(events => res.render("events/list", {events}))
         .catch(err => console.log(err))
 })
 
@@ -27,8 +27,6 @@ router.post("/crear", (req, res, next) => {
         type: 'Point',
         coordinates: [longitude, latitude]
     }
-
-
     Event
         .create({ name, place, date, description, creator })
         .then(() => res.redirect("/eventos"))
