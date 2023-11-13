@@ -13,7 +13,10 @@ class MarvelService {
     }
 
     getAllCharacters() {
-        return this.axiosApp.get(`/characters?ts=${timestamp}&apikey=${apiKey}&hash=${hashValue}`)
+        return this.axiosApp.get(`/characters?limit=30&ts=${timestamp}&apikey=${apiKey}&hash=${hashValue}`)
+    }
+    getCharacterByName(name) {
+        return this.axiosApp.get(`/characters?nameStartsWith=${name}&ts=${timestamp}&apikey=${apiKey}&hash=${hashValue}`)
     }
 
 }

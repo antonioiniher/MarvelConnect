@@ -1,8 +1,26 @@
 <h2>Lista de eventos</h2>
 <hr>
-{{#each events}}
-<p>{{name}}</p>
-<p>{{date}}</p>
-<p>{{description}}</p>
-<p>{{creator}}</p>
-{{/each}}
+<div id="carouselExampleCaptions" class="carousel slide">
+    {{#each events}}
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="https://pymstatic.com/117505/conversions/frases-marvel-wide_webp.webp" class="d-block w-100"
+                alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h2>{{name}}</h2>
+                <p>{{date}}</p>
+                <p>{{description}}</p>
+                <p>{{creator}}</p>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>

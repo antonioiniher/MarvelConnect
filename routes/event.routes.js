@@ -37,8 +37,6 @@ router.post("/crear", checkRole('CREATOR', 'ADMIN'), (req, res, next) => {
         type: 'Point',
         coordinates: [longitude, latitude]
     }
-
-
     Event
         .create({ name, place, date, description, creator })
         .then(() => res.redirect("/eventos"))
