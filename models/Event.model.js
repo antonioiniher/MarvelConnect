@@ -4,24 +4,24 @@ const eventSchema = new Schema(
     {
         name: {
             type: String,
-            required: true
+            required: true,
         },
         place: {
             type: {
                 type: String
             },
             coordinates: {
-                type: [Number]
+                type: [Number],
+                required: true
             },
-            required: true
         },
         date: {
             type: Date,
-            required: true
+            required: true,
         },
         description: {
             type: String,
-            minLength: 10
+            minLength: 10,
         },
         creator: {
             type: Schema.Types.ObjectId,

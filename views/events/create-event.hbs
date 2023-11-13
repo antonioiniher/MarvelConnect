@@ -1,0 +1,47 @@
+<div class="loginPage">
+    <div class="container text-center fondoblanco">
+        <div class="row d-flex justify-content-center">
+            <h1>Crear evento</h1>
+            <div class="col-md-6">
+                <form action="/eventos/crear" method="POST">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="name" name="name">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="latitude" class="form-label">Latitud</label>
+                        <input type="text" class="form-control" id="latitude" name="latitude">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="longitude" class="form-label">Longitud</label>
+                        <input type="text" class="form-control" id="longitude" name="longitude">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="date" class="form-label">Fecha del evento</label>
+                        <input type="date" class="form-control" id="date" name="date">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Descripción!</label>
+                        <textarea class="form-control" id="description" name="description"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="creator" class="form-label">Creador</label>
+                        <select id="creator" class="form-select" name="creator">
+                            {{#each users}}
+                            <option value="{{id}}">{{username}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-dark">Crear Evento</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
