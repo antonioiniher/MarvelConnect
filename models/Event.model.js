@@ -19,6 +19,10 @@ const eventSchema = new Schema(
             type: Date,
             required: true,
         },
+        imageUrl: {
+            type: String,
+            required: true
+        },
         description: {
             type: String,
             minLength: 10,

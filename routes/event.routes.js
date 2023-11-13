@@ -31,28 +31,37 @@ router.get("/crear", checkRole('CREATOR', 'ADMIN'), (req, res, next) => {
 })
 
 router.post("/crear", checkRole('CREATOR', 'ADMIN'), (req, res, next) => {
-    const evento = { name, latitude, longitude, date, description, creator } = req.body
+    const { name, latitude, longitude, date, imageUrl, description, creator } = req.body
 
     const place = {
         type: 'Point',
         coordinates: [longitude, latitude]
     }
     Event
-        .create({ name, place, date, description, creator })
+        .create({ name, place, date, imageUrl, description, creator })
         .then(() => res.redirect("/eventos"))
         .catch(err => console.log(err))
 })
 
-router.get("/:user_id", (req, res, next) => {
-    res.send("hola")
+router.get("/:event_id", (req, res, next) => {
+    const { event_id } = req.params
+
+    Event
+        .findById(event_id)
+        .then(event => res.render("events/details", event))
+        .catch(err => console.log(err))
 })
 
-router.get("/:user_id/editar", (req, res, next) => {
-    res.send("hola")
+router.get("/:event_id/editar", (req, res, next) => {
+    const { event_id } = req.params
+    Event
+        .findById(event_id)
+        .then(event => res.render("events/edit", event))
+        .catch(err => console.log(err))
 })
 
-router.post("/:user_id/editar", (req, res, next) => {
-    res.send("hola")
+router.post("/:event_id/editar", (req, res, next) => {
+    res.send(req.body)
 })
 
 router.get("/:user_id/eliminar", (req, res, next) => {

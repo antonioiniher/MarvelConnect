@@ -16,7 +16,6 @@ router.get("/", isLoggedIn, (req, res, next) => {
     }
 
     marvelService
-
         .getAllCharacters()
         .then(response => res.render('characters/list', {
             characters: response.data.data.results,
