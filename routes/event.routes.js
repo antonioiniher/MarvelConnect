@@ -4,23 +4,33 @@ const router = express.Router()
 const Event = require("../models/Event.model")
 const User = require("../models/User.model")
 
-router.get("/", (req, res, next) => {
+const { isLoggedIn, checkRole, checkOwnerOr } = require('../middleware/route-guard')
+
+router.get("/", isLoggedIn, (req, res, next) => {
     Event
         .find()
-        .then(events => res.render("events/list", { events }))
+        .then(events => res.render("events/list", {
+            events,
+            isLogged: req.session.currentUser,
+            isLoggedOut: !req.session.currentUser
+        }))
         .catch(err => console.log(err))
 })
 
-router.get("/crear", (req, res, next) => {
+router.get("/crear", checkRole('CREATOR', 'ADMIN'), (req, res, next) => {
 
     User
         .find({ "role": { $in: ["CREATOR", "ADMIN"] } })
-        .then(users => res.render("events/create-event", { users }))
+        .then(users => res.render("events/create-event", {
+            users,
+            isLogged: req.session.currentUser,
+            isLoggedOut: !req.session.currentUser
+        }))
         .catch(err => console.log(err))
 
 })
 
-router.post("/crear", (req, res, next) => {
+router.post("/crear", checkRole('CREATOR', 'ADMIN'), (req, res, next) => {
     const evento = { name, latitude, longitude, date, description, creator } = req.body
 
     const place = {
