@@ -13,13 +13,12 @@
 | GET    |`/usuario/:_id/editar`    | Página para editar el perfil de usuario        |      | -
 | POST   |`/usuario/:_id/editar`    | Post de la edición de perfil a la DB           |      | -
 | GET    |`/usuario/:_id/eliminar`  | Eliminación del usuario                        |      | -
-| GET    |`/personajes`             | Renderizar a la vista todos los personajes     |      |
-| POST   |`/personajes`             | Guardar personajes favoritos                   |      |
+| GET    |`/personajes`             | Renderizar a la vista todos los personajes     |      | -
+| POST   |`/personajes`             | Guardar personajes favoritos                   |      | - boton
 | GET    |`/personajes/aleatorio`   | Renderizar a vista un solo personaje aleatorio |      |
-| GET    |`/personajes/favoritos`   | Renderizar tus personajes favoritos            |      |
-| GET    |`/eventos`                | Mostrar lista de eventos disponibles           |      |
-| GET    |`/eventos/crear`          | Página para crear eventos                      |      |
-| POST   |`/eventos/crear`          | Post de la creación de los eventos a la DB     |      |
+| GET    |`/eventos`                | Mostrar lista de eventos disponibles           |      | -
+| GET    |`/eventos/crear`          | Página para crear eventos                      |      | -
+| POST   |`/eventos/crear`          | Post de la creación de los eventos a la DB     |      | -
 | GET    |`/eventos/:_id`           | Mostrar detalles del evento                    |      |
 | GET    |`/eventos/:_id/editar`    | Página para editar eventos                     |      |
 | POST   |`/eventos/:_id/editar`    | Post de la edición del evento a la DB          |      |

@@ -3,10 +3,14 @@
         <h2 style="background-color: black; color: red;">Lista de personajes</h2>
 
         <form action="/personajes" method="GET">
-            <label for="name" class="form-label">Buscar por nombre</label>
-            <input type="text" class="form-control" id="name" name="name">
+            <label for="name" class="form-label"></label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Buscar por nombre">
         </form>
 
+        <form action="/personajes" method="GET">
+            <label for="serie" class="form-label"></label>
+            <input type="text" class="form-control" id="serie" name="serie" placeholder="Buscar por serie">
+        </form>
 
 
 
@@ -20,6 +24,10 @@
                     <div class="card-body">
 
                         <h5 class="card-title">{{name}}</h5>
+
+                        <form action="/personajes/{{name}}" method="POST">
+                            <input type="submit" value="Añadir a favoritos">
+                        </form>
 
                     </div>
                 </div>
