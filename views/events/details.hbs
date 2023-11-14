@@ -1,10 +1,14 @@
 <h1>Detalles</h1>
-<p>{{name}}</p>
-<p>{{date}}</p>
-<p>{{description}}</p>
-<p>{{creator}}</p>
+<p>{{event.name}}</p>
+<p>{{event.date}}</p>
+<p>{{event.description}}</p>
+<p>{{event.creator}}</p>
 
-<a href="/eventos/{{id}}/editar" class="btn btn-dark">Editar Evento</a>
-<form action="/eventos/{{id}}/borrar" method="post">
+{{#if isAdminOrCreator}}
+<a href="/eventos/{{event._id}}/editar" class="btn btn-dark">Editar Evento</a>
+{{/if}}
+{{#if isAdmin}}
+<form action="/eventos/{{event._id}}/borrar" method="post">
     <button type="submit" class="btn btn-dark">Borrar Evento</button>
 </form>
+{{/if}}

@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 const marvelService = require('../services/characters.services')
-const { isLoggedIn } = require('../middleware/route-guard')
+const { isLoggedIn, checkOwnerOr } = require('../middleware/route-guard')
 const User = require('../models/User.model')
 
 
@@ -36,7 +36,7 @@ router.get("/", isLoggedIn, (req, res, next) => {
 
 })
 
-router.post('/', (req, res, next) => {
+router.post('/', checkOwnerOr, (req, res, next) => {
 
     let { nombre } = req.body
 

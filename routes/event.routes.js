@@ -12,7 +12,8 @@ router.get("/", isLoggedIn, (req, res, next) => {
         .then(events => res.render("events/list", {
             events,
             isLogged: req.session.currentUser,
-            isLoggedOut: !req.session.currentUser
+            isLoggedOut: !req.session.currentUser,
+            isAdminOrCreator: req.session.currentUser.role === 'ADMIN' || req.session.currentUser.role === 'CREATOR'
         }))
         .catch(err => console.log(err))
 })
@@ -31,36 +32,55 @@ router.get("/crear", checkRole('CREATOR', 'ADMIN'), (req, res, next) => {
 })
 
 router.post("/crear", checkRole('CREATOR', 'ADMIN'), (req, res, next) => {
+
     const { name, latitude, longitude, date, imageUrl, description, creator } = req.body
 
     const place = {
         type: 'Point',
         coordinates: [longitude, latitude]
     }
+
     Event
         .create({ name, place, date, imageUrl, description, creator })
         .then(() => res.redirect("/eventos"))
         .catch(err => console.log(err))
+
 })
 
-router.get("/:event_id", (req, res, next) => {
+router.get("/:event_id", isLoggedIn, (req, res, next) => {
+
     const { event_id } = req.params
 
     Event
         .findById(event_id)
-        .then(event => res.render("events/details", event))
+        .then(event => res.render("events/details", {
+            event,
+            isLogged: req.session.currentUser,
+            isLoggedOut: !req.session.currentUser,
+            isAdminOrCreator: req.session.currentUser.role === 'ADMIN' || req.session.currentUser.role === 'CREATOR',
+            isAdmin: req.session.currentUser.role === 'ADMIN'
+        }))
         .catch(err => console.log(err))
+
 })
 
-router.get("/:event_id/editar", (req, res, next) => {
+router.get("/:event_id/editar", checkRole('CREATOR', 'ADMIN'), (req, res, next) => {
+
     const { event_id } = req.params
+
     Event
         .findById(event_id)
-        .then(event => res.render("events/edit", event))
+        .then(event => res.render("events/edit", {
+            event,
+            isLogged: req.session.currentUser,
+            isLoggedOut: !req.session.currentUser
+        }))
         .catch(err => console.log(err))
+
 })
 
-router.post("/:event_id/editar", (req, res, next) => {
+router.post("/:event_id/editar", checkRole('CREATOR', 'ADMIN'), (req, res, next) => {
+
     const { event_id } = req.params
 
     const { name, latitude, longitude, date, imageUrl, description } = req.body
@@ -74,15 +94,18 @@ router.post("/:event_id/editar", (req, res, next) => {
         .findByIdAndUpdate(event_id, { name, place, date, imageUrl, description })
         .then(() => res.redirect("/eventos"))
         .catch(err => console.log(err))
+
 })
 
-router.post("/:user_id/eliminar", (req, res, next) => {
-    const { user_id } = req.params
+router.post("/:event_id/eliminar", checkRole('ADMIN'), (req, res, next) => {
+
+    const { event_id } = req.params
 
     Event
-        .findByIdAndDelete(user_id)
+        .findByIdAndDelete(event_id)
         .then(() => res.redirect("/eventos"))
         .catch(err => console.log(err))
+
 })
 
 module.exports = router
