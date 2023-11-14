@@ -44,7 +44,6 @@ router.post("/crear", checkRole('CREATOR', 'ADMIN'), (req, res, next) => {
 })
 
 router.get("/:event_id", isLoggedIn, (req, res, next) => {
-
     let littledate
     const { event_id } = req.params
 
@@ -66,12 +65,17 @@ router.get("/:event_id", isLoggedIn, (req, res, next) => {
 })
 
 router.get("/:event_id/editar", checkRole('CREATOR', 'ADMIN'), (req, res, next) => {
-
+    let littledate
     const { event_id } = req.params
 
     Event
         .findById(event_id)
-        .then(event => res.render("events/edit", event))
+        .then(event => {
+            if (event.date) {
+                littledate = date.formatDate(event.date)
+            }
+            res.render("events/edit", { event, littledate })
+        })
         .catch(err => console.log(err))
 
 })
