@@ -14,8 +14,6 @@ router.get("/", isLoggedIn, (req, res, next) => {
         .then(events => {
             res.render("events/list", {
                 events,
-                isLogged: req.session.currentUser,
-                isLoggedOut: !req.session.currentUser,
                 isAdminOrCreator: req.session.currentUser.role === 'ADMIN' || req.session.currentUser.role === 'CREATOR'
             })
         })
@@ -25,11 +23,7 @@ router.get("/", isLoggedIn, (req, res, next) => {
 router.get("/crear", checkRole('CREATOR', 'ADMIN'), (req, res, next) => {
     User
         .find({ "role": { $in: ["CREATOR", "ADMIN"] } })
-        .then(users => res.render("events/create-event", {
-            users,
-            isLogged: req.session.currentUser,
-            isLoggedOut: !req.session.currentUser
-        }))
+        .then(users => res.render("events/create-event", { users }))
         .catch(err => console.log(err))
 })
 
@@ -63,8 +57,6 @@ router.get("/:event_id", isLoggedIn, (req, res, next) => {
             res.render("events/details", {
                 event,
                 littledate,
-                isLogged: req.session.currentUser,
-                isLoggedOut: !req.session.currentUser,
                 isAdminOrCreator: req.session.currentUser.role === 'ADMIN' || req.session.currentUser.role === 'CREATOR',
                 isAdmin: req.session.currentUser.role === 'ADMIN'
             })
@@ -79,11 +71,7 @@ router.get("/:event_id/editar", checkRole('CREATOR', 'ADMIN'), (req, res, next) 
 
     Event
         .findById(event_id)
-        .then(event => res.render("events/edit", {
-            event,
-            isLogged: req.session.currentUser,
-            isLoggedOut: !req.session.currentUser
-        }))
+        .then(event => res.render("events/edit", event))
         .catch(err => console.log(err))
 
 })

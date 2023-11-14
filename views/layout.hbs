@@ -20,12 +20,12 @@
                <li class="nav-item">
                   <a class="nav-link" href="/">Inicio</a>
                </li>
-               {{#if isLoggedOut}}
+               {{#unless userId}}
                <li class="nav-item">
                   <a class="nav-link" href="/usuario/inicio-sesion">Iniciar sesión</a>
                </li>
-               {{/if}}
-               {{#if isLogged}}
+               {{/unless}}
+               {{#if userId}}
                <li class="nav-item">
                   <a class="nav-link" href="/usuario/lista">Lista de usuarios</a>
                </li>

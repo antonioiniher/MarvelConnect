@@ -9,7 +9,7 @@ router.get('/lista', isLoggedIn, (req, res, next) => {
 
     User
         .find()
-        .then(users => res.render('user/list', { users, isLogged: req.session.currentUser, isLoggedOut: !req.session.currentUser }))
+        .then(users => res.render('user/list', { users }))
         .catch(err => next(err))
 
 })
@@ -26,8 +26,6 @@ router.get('/:user_id', isLoggedIn, (req, res, next) => {
             res.render('user/profile', {
                 user,
                 littledate,
-                isLogged: req.session.currentUser,
-                isLoggedOut: !req.session.currentUser,
                 isAdmin: req.session.currentUser.role === 'ADMIN',
                 isOwner: req.session.currentUser._id === user_id && req.session.currentUser.role != 'ADMIN'
             })
@@ -40,11 +38,7 @@ router.get("/:user_id/editar", checkOwnerOr('ADMIN'), (req, res, next) => {
     const { user_id } = req.params
     User
         .findById(user_id)
-        .then(user => res.render("user/edit-profile", {
-            user,
-            isLogged: req.session.currentUser,
-            isLoggedOut: !req.session.currentUser
-        }))
+        .then(user => res.render("user/edit-profile", user))
         .catch(err => console.log(err))
 })
 

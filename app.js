@@ -9,6 +9,9 @@ require('./config/session.config')(app)
 
 app.locals.appTitle = 'Marvel connect'
 
+const { isLogged } = require("./middleware/navbar-guard")
+app.use(isLogged)
+
 require('./routes')(app)
 require("./error-handling")(app)
 

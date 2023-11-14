@@ -27,11 +27,7 @@ router.get("/", isLoggedIn, (req, res, next) => {
 
     marvelService
         .getAllCharacters()
-        .then(response => res.render('characters/list', {
-            characters: response.data.data.results,
-            isLogged: req.session.currentUser,
-            isLoggedOut: !req.session.currentUser
-        }))
+        .then(response => res.render('characters/list', { characters: response.data.data.results }))
         .catch(err => next(err))
 
 })
