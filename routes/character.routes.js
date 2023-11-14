@@ -34,19 +34,42 @@ router.get("/", isLoggedIn, (req, res, next) => {
 
 router.post('/', (req, res, next) => {
 
-    let { nombre } = req.body
+    let { charName } = req.body
 
-    if (nombre.includes('%20')) {
-        nombre.split('%20').join(' ')
+    if (charName.includes('%20')) {
+        charName.split('%20').join(' ')
     }
 
+
     User
-        .findOneAndUpdate(req.session.currentUser.id, { $push: { favCharacters: nombre } })
-        .then(() => res.redirect('/personajes'))
+        .findById(req.session.currentUser._id)
+        .then(user => {
+            if (!user.favCharacters.includes(charName)) {
+                User.findByIdAndUpdate(req.session.currentUser._id, { $push: { favCharacters: charName } })
+                    .then(() => res.redirect('/personajes'))
+                    .catch(err => next(err))
+            } else {
+                res.redirect('/personajes')
+            }
+        })
         .catch(err => next(err))
 
-
 })
+
+// router.post('/', (req, res, next) => {
+
+//     let { charName } = req.body
+
+//     if (charName.includes('%20')) {
+//         charName.split('%20').join(' ')
+//     }
+
+//     User
+//         .findByIdAndUpdate(req.session.currentUser._id, { $push: { favCharacters: charName } })
+//         .then(() => res.redirect('/personajes'))
+//         .catch(err => next(err))
+
+// })
 
 
 

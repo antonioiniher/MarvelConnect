@@ -27,9 +27,8 @@
 | GET    |`/api/events`             | Mapa para eventos                              |  ✅ |  
 | GET    |`/api/events/:_id`        | Mapa para detalle de evento                    |  ✅ |
 
--->Arreglar personajes favoritos
 -->Añadir apuntados a eventos
--->Arreglar fechas
 -->CSS y estilos
--->Arreglar filtros
+-->Meter filtros
+-->Arreglar personajes favoritos
 -->Detalles de cada personaje
