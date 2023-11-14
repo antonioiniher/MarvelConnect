@@ -7,13 +7,13 @@ let hashValue = "d82d67528f926be55e17cc7bbaa06484";
 class MarvelService {
 
     constructor() {
-        this.axiosApp = axios.create({                              //porque un create?
+        this.axiosApp = axios.create({
             baseURL: 'https://gateway.marvel.com:443/v1/public'
         })
     }
 
     getAllCharacters() {
-        return this.axiosApp.get(`/characters?limit=30&ts=${timestamp}&apikey=${apiKey}&hash=${hashValue}`)
+        return this.axiosApp.get(`/characters?limit=100&ts=${timestamp}&apikey=${apiKey}&hash=${hashValue}`)
     }
     getCharacterByName(name) {
         return this.axiosApp.get(`/characters?nameStartsWith=${name}&ts=${timestamp}&apikey=${apiKey}&hash=${hashValue}`)

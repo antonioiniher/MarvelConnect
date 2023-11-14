@@ -58,7 +58,7 @@ router.post('/:user_id/eliminar', checkRole('ADMIN'), (req, res, next) => {
 
     User
         .findByIdAndDelete(user_id)
-        .then(() => res.redirect('user/list'))
+        .then(() => res.redirect('/usuario/lista'))
         .catch(err => next(err))
 
 })
