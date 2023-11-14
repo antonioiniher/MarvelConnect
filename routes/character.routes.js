@@ -36,7 +36,7 @@ router.get("/", isLoggedIn, (req, res, next) => {
 
 })
 
-router.post('/', checkOwnerOr, (req, res, next) => {
+router.post('/', (req, res, next) => {
 
     let { nombre } = req.body
 
