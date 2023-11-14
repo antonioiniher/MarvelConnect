@@ -35,10 +35,16 @@ router.get('/:user_id', isLoggedIn, (req, res, next) => {
 })
 
 router.get("/:user_id/editar", checkOwnerOr('ADMIN'), (req, res, next) => {
+    let littledate
     const { user_id } = req.params
     User
         .findById(user_id)
-        .then(user => res.render("user/edit-profile", user))
+        .then(user => {
+            if (user.birthday) {
+                littledate = date.formatDate(user.birthday)
+            }
+            res.render("user/edit-profile", { user, littledate })
+        })
         .catch(err => console.log(err))
 })
 
