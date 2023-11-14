@@ -61,13 +61,28 @@ router.get("/:event_id/editar", (req, res, next) => {
 })
 
 router.post("/:event_id/editar", (req, res, next) => {
-    res.send(req.body)
+    const { event_id } = req.params
+
+    const { name, latitude, longitude, date, imageUrl, description } = req.body
+
+    const place = {
+        type: 'Point',
+        coordinates: [longitude, latitude]
+    }
+
+    Event
+        .findByIdAndUpdate(event_id, { name, place, date, imageUrl, description })
+        .then(() => res.redirect("/eventos"))
+        .catch(err => console.log(err))
 })
 
-router.get("/:user_id/eliminar", (req, res, next) => {
-    res.send("hola")
+router.post("/:user_id/eliminar", (req, res, next) => {
+    const { user_id } = req.params
+
+    Event
+        .findByIdAndDelete(user_id)
+        .then(() => res.redirect("/eventos"))
+        .catch(err => console.log(err))
 })
-
-
 
 module.exports = router
