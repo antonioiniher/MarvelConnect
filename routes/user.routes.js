@@ -63,4 +63,15 @@ router.post('/:user_id/eliminar', checkRole('ADMIN'), (req, res, next) => {
 
 })
 
+router.post('/:user_id/creator', checkRole('ADMIN'), (req, res, next) => {
+
+    const { user_id } = req.params
+
+    User
+        .findByIdAndUpdate(user_id, { role: 'CREATOR' })
+        .then(() => res.redirect(`/usuario/${user_id}`))
+        .catch(err => next(err))
+
+})
+
 module.exports = router
