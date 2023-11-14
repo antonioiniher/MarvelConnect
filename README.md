@@ -14,7 +14,7 @@
 | POST   |`/usuario/:_id/editar`    | Post de la edición de perfil a la DB           |      | -
 | GET    |`/usuario/:_id/eliminar`  | Eliminación del usuario                        |      | -
 | GET    |`/personajes`             | Renderizar a la vista todos los personajes     |      | -
-| POST   |`/personajes`             | Guardar personajes favoritos                   |      | - boton
+| POST   |`/personajes`             | Guardar personajes favoritos                   |      | - 
 | GET    |`/personajes/aleatorio`   | Renderizar a vista un solo personaje aleatorio |      |
 | GET    |`/eventos`                | Mostrar lista de eventos disponibles           |      | -
 | GET    |`/eventos/crear`          | Página para crear eventos                      |      | -

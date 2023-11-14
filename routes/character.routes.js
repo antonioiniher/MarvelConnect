@@ -36,21 +36,22 @@ router.get("/", isLoggedIn, (req, res, next) => {
 
 })
 
-router.post('/:name', (req, res, next) => {
+router.post('/', (req, res, next) => {
 
-    let { name } = req.params
+    let { nombre } = req.body
 
-    if (name.includes('%20')) {
-        name.split('%20').join(' ')
+    if (nombre.includes('%20')) {
+        nombre.split('%20').join(' ')
     }
 
     User
-        .findOneAndUpdate(req.session.currentUser.id, { $push: { favCharacters: name } })
+        .findOneAndUpdate(req.session.currentUser.id, { $push: { favCharacters: nombre } })
         .then(() => res.redirect('/personajes'))
         .catch(err => next(err))
 
-    console.log(name)
+
 })
+
 
 
 
