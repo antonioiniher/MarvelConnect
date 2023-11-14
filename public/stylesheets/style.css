@@ -66,3 +66,7 @@ body {
 .profile img {
   width: 80%;
 }
+
+#myMap {
+  height: 100vh
+}
