@@ -3,7 +3,7 @@ const router = express.Router()
 
 const User = require('./../models/User.model')
 const { isLoggedIn, checkRole, checkOwnerOr } = require('../middleware/route-guard')
-const { formatDate } = require('../utils/date')
+const date = require('../utils/date')
 
 router.get('/lista', isLoggedIn, (req, res, next) => {
 
@@ -15,18 +15,23 @@ router.get('/lista', isLoggedIn, (req, res, next) => {
 })
 
 router.get('/:user_id', isLoggedIn, (req, res, next) => {
-
+    let littledate
     const { user_id } = req.params
-
     User
         .findById(user_id)
-        .then(user => res.render('user/profile', {
-            user,
-            isLogged: req.session.currentUser,
-            isLoggedOut: !req.session.currentUser,
-            isAdmin: req.session.currentUser.role === 'ADMIN',
-            isOwner: req.session.currentUser._id === user_id && req.session.currentUser.role != 'ADMIN'
-        }))
+        .then(user => {
+            if (user.birthday) {
+                littledate = date.formatDate(user.birthday)
+            }
+            res.render('user/profile', {
+                user,
+                littledate,
+                isLogged: req.session.currentUser,
+                isLoggedOut: !req.session.currentUser,
+                isAdmin: req.session.currentUser.role === 'ADMIN',
+                isOwner: req.session.currentUser._id === user_id && req.session.currentUser.role != 'ADMIN'
+            })
+        })
         .catch(err => next(err))
 
 })
