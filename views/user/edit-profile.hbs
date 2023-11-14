@@ -29,13 +29,12 @@
                         <label for="birthday" class="form-label">Fecha de nacimiento</label>
                         <input type="date" class="form-control" id="birthday" name="birthday" value="{{user.birthday}}">
                     </div>
-
+                    <p>{{user.formatDate}}</p>
                     <div class="mb-3">
                         <label for="description" class="form-label">Descripción!</label>
                         <textarea class="form-control" id="description"
                             name="description">{{user.description}}</textarea>
                     </div>
-
                     <div class="d-grid gap-2">
                         <button type="submit" class="btn btn-dark">Editar Perfil</button>
                     </div>

@@ -1,7 +1,4 @@
-const mongoose = require('mongoose')
-
 module.exports = {
-
     formatDate: date => {
         let month = '' + (date.getMonth() + 1)
         let day = '' + date.getDate()
@@ -12,5 +9,4 @@ module.exports = {
 
         return [year, month, day].join('-')
     }
-
 }

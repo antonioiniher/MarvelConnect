@@ -1,6 +1,6 @@
 <h1>Detalles</h1>
 <p>{{event.name}}</p>
-<p>{{event.date}}</p>
+<p>{{littledate}}</p>
 <p>{{event.description}}</p>
 <p>{{event.creator}}</p>
 
@@ -12,3 +12,15 @@
     <button type="submit" class="btn btn-dark">Borrar Evento</button>
 </form>
 {{/if}}
+
+
+<h1>Map</h1>
+<hr>
+<figure id="myMap"></figure>
+
+<input type="hidden" id="identific" value="{{event.id}}">
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/js/place-map.js"></script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXrluxt6edH6GHzswvJd_nckU_vPeBjzc&callback=init"></script>

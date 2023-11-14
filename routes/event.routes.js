@@ -4,22 +4,25 @@ const router = express.Router()
 const Event = require("../models/Event.model")
 const User = require("../models/User.model")
 
-const { isLoggedIn, checkRole, checkOwnerOr } = require('../middleware/route-guard')
+const date = require('../utils/date')
+
+const { isLoggedIn, checkRole } = require('../middleware/route-guard')
 
 router.get("/", isLoggedIn, (req, res, next) => {
     Event
         .find()
-        .then(events => res.render("events/list", {
-            events,
-            isLogged: req.session.currentUser,
-            isLoggedOut: !req.session.currentUser,
-            isAdminOrCreator: req.session.currentUser.role === 'ADMIN' || req.session.currentUser.role === 'CREATOR'
-        }))
+        .then(events => {
+            res.render("events/list", {
+                events,
+                isLogged: req.session.currentUser,
+                isLoggedOut: !req.session.currentUser,
+                isAdminOrCreator: req.session.currentUser.role === 'ADMIN' || req.session.currentUser.role === 'CREATOR'
+            })
+        })
         .catch(err => console.log(err))
 })
 
 router.get("/crear", checkRole('CREATOR', 'ADMIN'), (req, res, next) => {
-
     User
         .find({ "role": { $in: ["CREATOR", "ADMIN"] } })
         .then(users => res.render("events/create-event", {
@@ -28,7 +31,6 @@ router.get("/crear", checkRole('CREATOR', 'ADMIN'), (req, res, next) => {
             isLoggedOut: !req.session.currentUser
         }))
         .catch(err => console.log(err))
-
 })
 
 router.post("/crear", checkRole('CREATOR', 'ADMIN'), (req, res, next) => {
@@ -49,17 +51,24 @@ router.post("/crear", checkRole('CREATOR', 'ADMIN'), (req, res, next) => {
 
 router.get("/:event_id", isLoggedIn, (req, res, next) => {
 
+    let littledate
     const { event_id } = req.params
 
     Event
         .findById(event_id)
-        .then(event => res.render("events/details", {
-            event,
-            isLogged: req.session.currentUser,
-            isLoggedOut: !req.session.currentUser,
-            isAdminOrCreator: req.session.currentUser.role === 'ADMIN' || req.session.currentUser.role === 'CREATOR',
-            isAdmin: req.session.currentUser.role === 'ADMIN'
-        }))
+        .then(event => {
+            if (event.date) {
+                littledate = date.formatDate(event.date)
+            }
+            res.render("events/details", {
+                event,
+                littledate,
+                isLogged: req.session.currentUser,
+                isLoggedOut: !req.session.currentUser,
+                isAdminOrCreator: req.session.currentUser.role === 'ADMIN' || req.session.currentUser.role === 'CREATOR',
+                isAdmin: req.session.currentUser.role === 'ADMIN'
+            })
+        })
         .catch(err => console.log(err))
 
 })
