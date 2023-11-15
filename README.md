@@ -28,5 +28,4 @@
 | GET    |`/api/events/:_id`        | Mapa para detalle de evento                    |  ✅ |
 
 -->Quitar imagenes not found
--->CSS y estilos
 -->Arreglar personajes favoritos +-
