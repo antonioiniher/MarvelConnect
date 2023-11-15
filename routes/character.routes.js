@@ -31,13 +31,8 @@ router.get("/", isLoggedIn, (req, res, next) => {
                 return req.session.currentUser.favCharacters.includes(e.name) ? true : false
             })
             res.render('characters/list', {
-<<<<<<< HEAD
                 characters: response.data.data.results,
                 favArray
-=======
-                characters: response.data.data.results
-                // ,isFav
->>>>>>> 604dcf9fb48231a44655ac3141dffda3ed941fc5
             })
 
         })
@@ -52,7 +47,6 @@ router.post('/', (req, res, next) => {
     if (charName.includes('%20')) {
         charName.split('%20').join(' ')
     }
-
 
     User
         .findById(req.session.currentUser._id)

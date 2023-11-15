@@ -13,11 +13,15 @@
             </ul>
 
             <input type="hidden" id="identific" value="{{event.id}}">
-
+            {{#if eventState}}
             <form action="/eventos/{{event.id}}/apuntarse" method="post">
-                <button type="submit" class="btn btn-dark">Apuntate</button>
+                <button type="submit" class="btn btn-dark">Desapuntarse</button>
             </form>
-
+            {{else}}
+            <form action="/eventos/{{event.id}}/apuntarse" method="post">
+                <button type="submit" class="btn btn-dark">Apuntarse</button>
+            </form>
+            {{/if}}
             {{#if isAdminOrCreator}}
             <a href="/eventos/{{event._id}}/editar" class="btn btn-dark">Editar Evento</a>
             {{/if}}

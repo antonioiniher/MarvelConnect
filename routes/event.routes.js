@@ -44,18 +44,19 @@ router.post("/crear", checkRole('CREATOR', 'ADMIN'), (req, res, next) => {
 })
 
 router.get("/:event_id", isLoggedIn, (req, res, next) => {
-    let littledate
     const { event_id } = req.params
     Event
         .findById(event_id)
         .populate("participants")
         .then(event => {
-            if (event.date) {
-                littledate = date.formatDate(event.date)
-            }
+            let littledate = date.formatDate(event.date)
+            let eventState = event.participants.some(participante => {
+                return participante._id.toString() === req.session.currentUser._id;
+            });
             res.render("events/details", {
                 event,
                 littledate,
+                eventState,
                 isAdminOrCreator: req.session.currentUser.role === 'ADMIN' || req.session.currentUser.role === 'CREATOR',
                 isAdmin: req.session.currentUser.role === 'ADMIN'
             })
@@ -110,10 +111,19 @@ router.post("/:event_id/eliminar", checkRole('ADMIN'), (req, res, next) => {
 
 router.post("/:event_id/apuntarse", (req, res, next) => {
     const { event_id } = req.params
-    Event
-        .findByIdAndUpdate(event_id, { $push: { participants: req.session.currentUser._id } })
+
+    Event.findById(event_id)
+        .then(event => {
+            const currentUserID = req.session.currentUser._id;
+
+            if (!event.participants.includes(currentUserID)) {
+                return Event.findByIdAndUpdate(event_id, { $push: { participants: currentUserID } });
+            } else {
+                return Event.findByIdAndUpdate(event_id, { $pull: { participants: currentUserID } });
+            }
+        })
         .then(() => res.redirect(`/eventos/${event_id}`))
-        .catch(err => console.log(err))
+        .catch(err => console.log(err));
 })
 
 module.exports = router
