@@ -109,4 +109,15 @@ router.post("/:event_id/eliminar", checkRole('ADMIN'), (req, res, next) => {
 
 })
 
+router.post("/:event_id/apuntarse", (req, res, next) => {
+
+    const { event_id } = req.params
+
+    Event
+        .findByIdAndDelete(event_id)
+        .then(() => res.redirect("/eventos"))
+        .catch(err => console.log(err))
+
+})
+
 module.exports = router
