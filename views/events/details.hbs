@@ -1,18 +1,22 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <figure id="myMap"></figure>
-        </div>
-        <div class="col-md-6">
             <h2>Detalles</h2>
             <p>{{event.name}}</p>
             <p>{{littledate}}</p>
             <p>{{event.description}}</p>
+
+            <ul>
+                {{#each event.participants}}
+                <li>{{this.username}}</li>
+                {{/each}}
+            </ul>
+
             <input type="hidden" id="identific" value="{{event.id}}">
 
-            <div>
-                <a href="/eventos/{{event._id}}/apuntate" class="btn btn-dark">Apuntate al evento</a>
-            </div>
+            <form action="/eventos/{{event.id}}/apuntarse" method="post">
+                <button type="submit" class="btn btn-dark">Apuntate</button>
+            </form>
 
             {{#if isAdminOrCreator}}
             <a href="/eventos/{{event._id}}/editar" class="btn btn-dark">Editar Evento</a>
@@ -22,6 +26,9 @@
                 <button type="submit" class="btn btn-dark">Borrar Evento</button>
             </form>
             {{/if}}
+        </div>
+        <div class="col-md-6">
+            <figure id="myMap"></figure>
         </div>
     </div>
 </div>
