@@ -20,7 +20,7 @@
 | GET    |`/eventos/crear`          | Página para crear eventos                      |      | 
 | POST   |`/eventos/crear`          | Post de la creación de los eventos a la DB     |      |
 | GET    |`/eventos/:_id`           | Mostrar detalles del evento                    |      |
-| POST   |`/eventos/:_id`           | Apuntarse a eventos                            |      | <----
+| POST   |`/eventos/:_id`           | Apuntarse a eventos                            |      |
 | GET    |`/eventos/:_id/editar`    | Página para editar eventos                     |      | 
 | POST   |`/eventos/:_id/editar`    | Post de la edición del evento a la DB          |      | 
 | GET    |`/eventos/:_id/eliminar`  | Eliminación de eventos                         |      | 

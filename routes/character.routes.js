@@ -49,31 +49,14 @@ router.post('/', (req, res, next) => {
                     .then(() => res.redirect('/personajes'))
                     .catch(err => next(err))
             } else {
-                res.redirect('/personajes')
+                User.findByIdAndUpdate(req.session.currentUser._id, { $pull: { favCharacters: charName } })
+                    .then(() => res.redirect('/personajes'))
+                    .catch(err => next(err))
+
             }
         })
         .catch(err => next(err))
 
 })
-
-// router.post('/', (req, res, next) => {
-
-//     let { charName } = req.body
-
-//     if (charName.includes('%20')) {
-//         charName.split('%20').join(' ')
-//     }
-
-//     User
-//         .findByIdAndUpdate(req.session.currentUser._id, { $push: { favCharacters: charName } })
-//         .then(() => res.redirect('/personajes'))
-//         .catch(err => next(err))
-
-// })
-
-
-
-
-
 
 module.exports = router

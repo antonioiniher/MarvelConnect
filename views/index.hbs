@@ -1,7 +1,10 @@
 <div class="homePage">
     <div class="container">
+        {{#unless userId}}
         <h1 class="text-center">Bienvenido a {{appTitle}}!</h1>
+        {{/unless}}
         {{#if userId}}
+        <h1 class="text-center">Bienvenid@ {{username}}</h1>
         <div class="row">
             <div class="col-md-3 ">
                 <div class="card text-center" style="width: 18rem; background-color: #FDBB31;">
