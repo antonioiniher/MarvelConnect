@@ -27,13 +27,14 @@ router.get("/", isLoggedIn, (req, res, next) => {
     marvelService
         .getAllCharacters()
         .then(response => {
-            // let array = []
-            // response.data.data.results.forEach(e => array.push(e.name))
-            // const isFav = req.session.currentUser.favCharacters.includes(...array)
+            const favArray = response.data.data.results.map(e => {
+                return req.session.currentUser.favCharacters.includes(e.name) ? true : false
+            })
             res.render('characters/list', {
                 characters: response.data.data.results,
-                isFav
+                favArray
             })
+
         })
         .catch(err => next(err))
 

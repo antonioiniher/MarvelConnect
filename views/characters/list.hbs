@@ -13,7 +13,6 @@
         </form>
 
 
-
         <div class="row">
             {{#each characters}}
             <div class="col-md-4 d-flex justify-content-center text-center">
@@ -28,13 +27,12 @@
                         <form action="/personajes" method="POST">
                             <button type="submit" value="{{name}}" name="charName">Añadir a favoritos</button>
                         </form>
-
-                        {{#if ../isFav}}
-                        <form action="/personajes" method="POST">
+                        {{#each ../favArray}}
+                        <p>{{../this}}</p>
+                        {{!-- <form action="/personajes" method="POST">
                             <button type="submit" value="{{name}}" name="charName">Quitar de favoritos</button>
-                        </form>
-                        {{/if}}
-
+                        </form> --}}
+                        {{/each}}
                     </div>
                 </div>
             </div>
