@@ -10,6 +10,10 @@
             <p>{{event.description}}</p>
             <input type="hidden" id="identific" value="{{event.id}}">
 
+            <div>
+                <a href="/eventos/{{event._id}}/apuntate" class="btn btn-dark">Apuntate al evento</a>
+            </div>
+
             {{#if isAdminOrCreator}}
             <a href="/eventos/{{event._id}}/editar" class="btn btn-dark">Editar Evento</a>
             {{/if}}
