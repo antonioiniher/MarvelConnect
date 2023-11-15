@@ -46,9 +46,9 @@ router.post("/crear", checkRole('CREATOR', 'ADMIN'), (req, res, next) => {
 router.get("/:event_id", isLoggedIn, (req, res, next) => {
     let littledate
     const { event_id } = req.params
-
     Event
         .findById(event_id)
+        .populate("participants")
         .then(event => {
             if (event.date) {
                 littledate = date.formatDate(event.date)
@@ -61,7 +61,6 @@ router.get("/:event_id", isLoggedIn, (req, res, next) => {
             })
         })
         .catch(err => console.log(err))
-
 })
 
 router.get("/:event_id/editar", checkRole('CREATOR', 'ADMIN'), (req, res, next) => {
@@ -110,14 +109,11 @@ router.post("/:event_id/eliminar", checkRole('ADMIN'), (req, res, next) => {
 })
 
 router.post("/:event_id/apuntarse", (req, res, next) => {
-
     const { event_id } = req.params
-
     Event
-        .findByIdAndDelete(event_id)
-        .then(() => res.redirect("/eventos"))
+        .findByIdAndUpdate(event_id, { $push: { participants: req.session.currentUser._id } })
+        .then(() => res.redirect(`/eventos/${event_id}`))
         .catch(err => console.log(err))
-
 })
 
 module.exports = router
