@@ -67,8 +67,35 @@ body {
 }
 
 .profile {
-  background-image: url(./../images/marvelfondo.jpeg);
+  background-image: url(./../images/backgraunddd.jpeg);
   font-size: 1.7em;
+
+  background-attachment: fixed;
+  background-position: top;
+  background-size: cover;
+}
+
+.fondoblanco2 {
+  background-color: #b8b7b600;
+  width: 55%;
+  height: fit-content
+}
+
+.info {
+  background-color: #1c090971;
+  border-radius: 30px;
+  width: 80%;
+  margin-top: 10%;
+  padding: 15px;
+  border-color: black;
+  border-style: solid;
+  color: white;
+}
+
+.profile img {
+  border-radius: 20%;
+  border-color: black;
+  border-style: solid;
 }
 
 .profile img {
@@ -79,17 +106,26 @@ body {
   height: 50vh;
   width: 800px;
   margin: auto;
+  margin-bottom: 100px;
 }
+
 
 .h1List {
   text-align: center;
-  margin-top: 40px;
-  margin-bottom: 20px;
+  padding: 40px;
+  color: white;
+
 }
 
 .fondoLista {
-  background-image: url(../images/fondo.jpeg);
-  background-repeat: no-repeat;
+  background-image: url(../images/backgraunddd.jpeg);
+  background-position: top;
   background-size: cover;
-  background-position-y: 50%;
+
+
+}
+
+.createEventbtn {
+  margin-left: 47%;
+  margin-top: 8%;
 }
