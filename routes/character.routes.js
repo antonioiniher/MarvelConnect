@@ -10,7 +10,6 @@ router.get("/", isLoggedIn, (req, res, next) => {
 
     const { name, serie } = req.query
 
-
     if (name) {
         marvelService
             .getCharacterByName(name)
@@ -27,7 +26,15 @@ router.get("/", isLoggedIn, (req, res, next) => {
 
     marvelService
         .getAllCharacters()
-        .then(response => res.render('characters/list', { characters: response.data.data.results }))
+        .then(response => {
+            // let array = []
+            // response.data.data.results.forEach(e => array.push(e.name))
+            // const isFav = req.session.currentUser.favCharacters.includes(...array)
+            res.render('characters/list', {
+                characters: response.data.data.results,
+                isFav
+            })
+        })
         .catch(err => next(err))
 
 })

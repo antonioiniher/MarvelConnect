@@ -27,6 +27,7 @@
 | GET    |`/api/events`             | Mapa para eventos                              |  ✅ |  
 | GET    |`/api/events/:_id`        | Mapa para detalle de evento                    |  ✅ |
 
+-->Quitar imagenes not found
 -->Añadir apuntados a eventos
 -->CSS y estilos
 -->Meter filtros

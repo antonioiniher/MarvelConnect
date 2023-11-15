@@ -1,8 +1,8 @@
 const axios = require('axios')
 
-let timestamp = "1681802982683";
-let apiKey = "365228bc85ed39b3f177f3c66a89e36a";
-let hashValue = "d82d67528f926be55e17cc7bbaa06484";
+let timestamp = process.env.TIMESTAMP;
+let apiKey = process.env.API_KEY;
+let hashValue = process.env.HASHVALUE;
 
 class MarvelService {
 
@@ -13,7 +13,7 @@ class MarvelService {
     }
 
     getAllCharacters() {
-        return this.axiosApp.get(`/characters?limit=100&ts=${timestamp}&apikey=${apiKey}&hash=${hashValue}`)
+        return this.axiosApp.get(`/characters?limit=75&ts=${timestamp}&apikey=${apiKey}&hash=${hashValue}`)
     }
     getCharacterByName(name) {
         return this.axiosApp.get(`/characters?nameStartsWith=${name}&ts=${timestamp}&apikey=${apiKey}&hash=${hashValue}`)

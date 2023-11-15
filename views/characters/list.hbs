@@ -29,6 +29,12 @@
                             <button type="submit" value="{{name}}" name="charName">Añadir a favoritos</button>
                         </form>
 
+                        {{#if ../isFav}}
+                        <form action="/personajes" method="POST">
+                            <button type="submit" value="{{name}}" name="charName">Quitar de favoritos</button>
+                        </form>
+                        {{/if}}
+
                     </div>
                 </div>
             </div>
