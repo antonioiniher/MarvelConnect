@@ -31,8 +31,8 @@ router.get("/", isLoggedIn, (req, res, next) => {
             // response.data.data.results.forEach(e => array.push(e.name))
             // const isFav = req.session.currentUser.favCharacters.includes(...array)
             res.render('characters/list', {
-                characters: response.data.data.results,
-                isFav
+                characters: response.data.data.results
+                // ,isFav
             })
         })
         .catch(err => next(err))
