@@ -5,16 +5,16 @@ Amarillo:#D9BF1E
 Morado:#723497
 Gris:#61605F */
 
-
 body {
   font-family: 'Marvel', sans-serif;
 }
 
 .homePage {
-  background-image: url(./../images/marvel.webp);
-  height: 90vh;
+  background-image: url(./../images/wallpaper.jpg);
+  background-color: #000000;
+  background-attachment: fixed;
   background-size: cover;
-  background-position-y: -20vh;
+  height: 90.9vh;
 }
 
 .loginPage {
@@ -34,7 +34,7 @@ body {
   font-size: 8em;
   font-weight: bolder;
   padding-bottom: 150px;
-  color: #FDBB31;
+  color: white;
 }
 
 #error {
@@ -50,8 +50,12 @@ body {
   object-position: top;
 }
 
+.navbar {
+  background-color: black;
+}
+
 .nav-item a {
-  color: #F00004;
+  color: white;
   font-size: 1.5em;
 }
 

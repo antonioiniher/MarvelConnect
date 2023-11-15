@@ -1,33 +1,10 @@
 <div class="homePage">
-    <div class="container">
+    <div class="container pt-3">
         {{#unless userId}}
         <h1 class="text-center">Bienvenido a {{appTitle}}!</h1>
         {{/unless}}
         {{#if userId}}
         <h1 class="text-center">Bienvenid@ {{username}}</h1>
-        <div class="row">
-            <div class="col-md-3 ">
-                <div class="card text-center" style="width: 18rem; background-color: #FDBB31;">
-                    <div class="card-body homeCard">
-                        <h5 class="card-title">Descubre usuarios!</h5>
-                        <hr>
-                        <p class="card-text">Aquí podras descubrir gente con la que conectar.</p>
-                        <a href="/usuario/lista" class="btn btn-dark">Pincha aquí</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6"></div>
-            <div class="col-md-3">
-                <div class="card text-center" style="width: 18rem; background-color: #FDBB31;">
-                    <div class="card-body homeCard">
-                        <h5 class="card-title">Descubre eventos!</h5>
-                        <hr>
-                        <p class="card-text">Aquí podras descubrir eventos a los que asistir.</p>
-                        <a href="/eventos" class="btn btn-dark">Pincha aquí</a>
-                    </div>
-                </div>
-            </div>
-        </div>
         {{/if}}
     </div>
 </div>
