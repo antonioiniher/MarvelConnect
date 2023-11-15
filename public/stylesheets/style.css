@@ -15,17 +15,19 @@ body {
   background-attachment: fixed;
   background-size: cover;
   height: 90.9vh;
+
 }
 
 .loginPage {
-  background-image: url(./../images/fondo.jpeg);
+  background-image: url(./../images/fondoBueno.jpg);
   height: 100vh;
-  background-size: contain;
+  background-size: cover;
   background-position: center;
+  color: white;
 }
 
 .fondoblanco {
-  background-color: #ECE1B4;
+  background-color: #f5f4f24c;
   width: 55%;
   height: 100vh;
 }
@@ -67,11 +69,12 @@ body {
 }
 
 .listBg {
-  background-image: url(./../images/marvelfondo2.jpeg);
+  background-image: url(./../images/fondoBueno.jpg);
+
 }
 
 .profile {
-  background-image: url(./../images/backgraunddd.jpeg);
+  background-image: url(./../images/fondoBueno.jpg);
   font-size: 1.7em;
 
   background-attachment: fixed;
@@ -110,7 +113,6 @@ body {
   height: 50vh;
   width: 800px;
   margin: auto;
-  margin-bottom: 100px;
 }
 
 
@@ -122,9 +124,10 @@ body {
 }
 
 .fondoLista {
-  background-image: url(../images/backgraunddd.jpeg);
+  background-image: url(./../images/fondoBueno.jpg);
   background-position: top;
   background-size: cover;
+
 
 
 }
@@ -132,4 +135,12 @@ body {
 .createEventbtn {
   margin-left: 47%;
   margin-top: 8%;
+}
+
+.bgeventdetails {
+  background-image: url(./../images/fondoBueno.jpg);
+  background-position: top;
+
+  background-size: cover;
+  height: 100vh;
 }

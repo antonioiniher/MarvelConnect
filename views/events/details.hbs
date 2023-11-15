@@ -1,38 +1,40 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <h2>Detalles</h2>
-            <p>{{event.name}}</p>
-            <p>{{littledate}}</p>
-            <p>{{event.description}}</p>
+<div class="bgeventdetails">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 sombra">
+                <h2>Detalles</h2>
+                <p>{{event.name}}</p>
+                <p>{{littledate}}</p>
+                <p>{{event.description}}</p>
 
-            <ul>
-                {{#each event.participants}}
-                <li>{{this.username}}</li>
-                {{/each}}
-            </ul>
+                <ul>
+                    {{#each event.participants}}
+                    <li>{{this.username}}</li>
+                    {{/each}}
+                </ul>
 
-            <input type="hidden" id="identific" value="{{event.id}}">
-            {{#if eventState}}
-            <form action="/eventos/{{event.id}}/apuntarse" method="post">
-                <button type="submit" class="btn btn-dark">Desapuntarse</button>
-            </form>
-            {{else}}
-            <form action="/eventos/{{event.id}}/apuntarse" method="post">
-                <button type="submit" class="btn btn-dark">Apuntarse</button>
-            </form>
-            {{/if}}
-            {{#if isAdminOrCreator}}
-            <a href="/eventos/{{event._id}}/editar" class="btn btn-dark">Editar Evento</a>
-            {{/if}}
-            {{#if isAdmin}}
-            <form action="/eventos/{{event._id}}/borrar" method="post">
-                <button type="submit" class="btn btn-dark">Borrar Evento</button>
-            </form>
-            {{/if}}
-        </div>
-        <div class="col-md-6">
-            <figure id="myMap"></figure>
+                <input type="hidden" id="identific" value="{{event.id}}">
+                {{#if eventState}}
+                <form action="/eventos/{{event.id}}/apuntarse" method="post">
+                    <button type="submit" class="btn btn-dark">Desapuntarse</button>
+                </form>
+                {{else}}
+                <form action="/eventos/{{event.id}}/apuntarse" method="post">
+                    <button type="submit" class="btn btn-dark">Apuntarse</button>
+                </form>
+                {{/if}}
+                {{#if isAdminOrCreator}}
+                <a href="/eventos/{{event._id}}/editar" class="btn btn-dark">Editar Evento</a>
+                {{/if}}
+                {{#if isAdmin}}
+                <form action="/eventos/{{event._id}}/borrar" method="post">
+                    <button type="submit" class="btn btn-dark">Borrar Evento</button>
+                </form>
+                {{/if}}
+            </div>
+            <div class="col-md-6">
+                <figure id="myMap"></figure>
+            </div>
         </div>
     </div>
 </div>
