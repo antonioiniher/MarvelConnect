@@ -35,6 +35,8 @@ body {
   font-weight: bolder;
   padding-bottom: 150px;
   color: white;
+  opacity: 0.6;
+  text-transform: uppercase;
 }
 
 #error {
@@ -57,13 +59,6 @@ body {
 .nav-item a {
   color: white;
   font-size: 1.5em;
-}
-
-.homeCard h5,
-.homeCard p,
-.homeCard a {
-  font-size: 1.6em;
-  color: #F00004;
 }
 
 .listBg {
@@ -132,4 +127,10 @@ body {
 .createEventbtn {
   margin-left: 47%;
   margin-top: 8%;
+}
+
+.char-card img {
+  object-fit: cover;
+  object-position: center;
+  height: 300px;
 }

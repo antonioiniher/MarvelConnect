@@ -7,7 +7,7 @@ const app = express()
 require("./config")(app)
 require('./config/session.config')(app)
 
-app.locals.appTitle = 'Marvel connect'
+app.locals.appTitle = 'Marvel'
 
 const { isLogged } = require("./middleware/navbar-guard")
 app.use(isLogged)
