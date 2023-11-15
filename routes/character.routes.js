@@ -47,7 +47,6 @@ router.post('/', (req, res, next) => {
         charName.split('%20').join(' ')
     }
 
-
     User
         .findById(req.session.currentUser._id)
         .then(user => {
