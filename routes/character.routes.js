@@ -32,7 +32,7 @@ router.get("/", isLoggedIn, (req, res, next) => {
             // const isFav = req.session.currentUser.favCharacters.includes(...array)
             res.render('characters/list', {
                 characters: response.data.data.results,
-                isFav
+                //    isFav
             })
         })
         .catch(err => next(err))
