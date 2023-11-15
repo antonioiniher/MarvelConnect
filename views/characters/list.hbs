@@ -2,15 +2,25 @@
     <div class="container pt-5">
         <h2 style="background-color: black; color: red;">Lista de personajes</h2>
 
-        <form action="/personajes" method="GET">
-            <label for="name" class="form-label"></label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="Buscar por nombre">
-        </form>
-
-        <form action="/personajes" method="GET">
-            <label for="serie" class="form-label"></label>
-            <input type="text" class="form-control" id="serie" name="serie" placeholder="Buscar por serie">
-        </form>
+        <div class="row mt-3">
+            <div class="col-md-5">
+                <form action="/personajes" method="GET">
+                    <input type="text" class="form-control" id="name" name="name">
+                    <div class="d-grid gap-2 mt-2">
+                        <button type="submit" class="btn btn-dark">Buscar por nombre</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-5">
+                <form action="/personajes" method="GET">
+                    <input type="text" class="form-control" id="serie" name="serie">
+                    <div class="d-grid gap-2  mt-2">
+                        <button type="submit" class="btn btn-dark">Buscar por serie</button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
         <div class="row">
             {{#each characters}}
