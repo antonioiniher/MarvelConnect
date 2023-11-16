@@ -6,9 +6,16 @@ let hashValue = process.env.HASHVALUE;
 
 class MarvelService {
 
+
+    // TODO: DECIDIR SOBRE PARAMS
     constructor() {
         this.axiosApp = axios.create({
-            baseURL: 'https://gateway.marvel.com:443/v1/public'
+            baseURL: 'https://gateway.marvel.com:443/v1/public',
+            // params: {
+            //     apiKey: process.env.API_KEY,
+            //     ts: process.env.TIMESTAMP,
+            //     hash: process.env.HASHVALUE
+            // }
         })
     }
 

@@ -1,4 +1,4 @@
-const isLogged = (req, res, next) => {
+const updateUserInfo = (req, res, next) => {
     if (req.session.currentUser) {
         res.locals.userId = req.session.currentUser._id
     } else {
@@ -9,5 +9,5 @@ const isLogged = (req, res, next) => {
 
 
 module.exports = {
-    isLogged
+    updateUserInfo
 }

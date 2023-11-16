@@ -4,10 +4,13 @@ const router = express.Router()
 const Event = require("../models/Event.model")
 const User = require("../models/User.model")
 
-const date = require('../utils/date')
+const dateUtils = require('../utils/date')
 
 const { isLoggedIn, checkRole } = require('../middleware/route-guard')
-let eventId;
+// let eventId;
+
+// TODO: RED POINTS
+// TODO: RESOLVER CATCH CON NEXT
 router.get("/", isLoggedIn, (req, res, next) => {
     Event
         .find()
@@ -49,11 +52,11 @@ router.get("/:event_id", isLoggedIn, (req, res, next) => {
         .findById(event_id)
         .populate("participants")
         .then(event => {
-            let littledate = date.formatDate(event.date)
+            let littledate = dateUtils.formatDate(event.date)
             let eventState = event.participants.some(participante => {
                 return participante._id.toString() === req.session.currentUser._id;
             });
-            eventId = event.id;
+            // eventId = event.id;
             res.render("events/details", {
                 event,
                 littledate,
@@ -67,13 +70,13 @@ router.get("/:event_id", isLoggedIn, (req, res, next) => {
 
 router.get("/:event_id/editar", checkRole('CREATOR', 'ADMIN'), (req, res, next) => {
     let littledate
-    const { event_id } = eventId;
+    const { event_id } = req.params;
 
     Event
         .findById(event_id)
         .then(event => {
             if (event.date) {
-                littledate = date.formatDate(event.date)
+                littledate = dateUtils.formatDate(event.date)
             }
             res.render("events/edit", { event, littledate })
         })
@@ -115,13 +118,11 @@ router.post("/:event_id/apuntarse", (req, res, next) => {
 
     Event.findById(event_id)
         .then(event => {
-            const currentUserID = req.session.currentUser._id;
+            const { _id: currentUserID } = req.session.currentUser
 
-            if (!event.participants.includes(currentUserID)) {
-                return Event.findByIdAndUpdate(event_id, { $push: { participants: currentUserID } });
-            } else {
-                return Event.findByIdAndUpdate(event_id, { $pull: { participants: currentUserID } });
-            }
+            const query = !event.participants.includes(currentUserID) ? { $push: { participants: currentUserID } } : { $pull: { participants: currentUserID } }
+
+            return Event.findByIdAndUpdate(event_id, query);
         })
         .then(() => res.redirect(`/eventos/${event_id}`))
         .catch(err => console.log(err));

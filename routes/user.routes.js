@@ -15,14 +15,12 @@ router.get('/lista', isLoggedIn, (req, res, next) => {
 })
 
 router.get('/:user_id', isLoggedIn, (req, res, next) => {
-    let littledate
+
     const { user_id } = req.params
     User
         .findById(user_id)
         .then(user => {
-            if (user.birthday) {
-                littledate = date.formatDate(user.birthday)
-            }
+            const littledate = user.birthday ? date.formatDate(user.birthday) : undefined
             res.render('user/profile', {
                 user,
                 littledate,
@@ -35,14 +33,12 @@ router.get('/:user_id', isLoggedIn, (req, res, next) => {
 })
 
 router.get("/:user_id/editar", checkOwnerOr('ADMIN'), (req, res, next) => {
-    let littledate
+
     const { user_id } = req.params
     User
         .findById(user_id)
         .then(user => {
-            if (user.birthday) {
-                littledate = date.formatDate(user.birthday)
-            }
+            const littledate = user.birthday ? date.formatDate(user.birthday) : undefined
             res.render("user/edit-profile", { user, littledate })
         })
         .catch(err => console.log(err))

@@ -1,11 +1,13 @@
 const { Schema, model } = require("mongoose")
 
+
+// TODO: VALIDACIÓN CUSTOMIZADA
 const userSchema = new Schema(
   {
     username: {
       type: String,
       trim: true,
-      required: true,
+      required: [true, 'eL NOMBRE DE USUARIO ES OBLIGATORIO'],
     },
     email: {
       type: String,

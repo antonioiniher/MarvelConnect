@@ -9,8 +9,8 @@ require('./config/session.config')(app)
 
 app.locals.appTitle = 'Marvel'
 
-const { isLogged } = require("./middleware/navbar-guard")
-app.use(isLogged)
+const { updateUserInfo } = require("./middleware/user-local-update")
+app.use(updateUserInfo)
 
 require('./routes')(app)
 require("./error-handling")(app)

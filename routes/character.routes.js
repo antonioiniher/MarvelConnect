@@ -5,15 +5,16 @@ const marvelService = require('../services/characters.services')
 const { isLoggedIn, checkOwnerOr } = require('../middleware/route-guard')
 const User = require('../models/User.model')
 
-
+// TODO OPCIONAL: DESACOPLAR RESULTADOS
 router.get("/", isLoggedIn, (req, res, next) => {
+
     const { name, serie } = req.query
 
     if (name) {
         marvelService
             .getCharacterByName(name)
             .then(response => {
-                const favCharacters = req.session.currentUser.favCharacters
+                const { favCharacters } = req.session.currentUser
                 const characters = response.data.data.results.map(character => {
                     return {
                         ...character,
@@ -29,7 +30,7 @@ router.get("/", isLoggedIn, (req, res, next) => {
         marvelService
             .getCharacterBySerie(serie)
             .then(response => {
-                const favCharacters = req.session.currentUser.favCharacters
+                const { favCharacters } = req.session.currentUser
                 const characters = response.data.data.results.map(character => {
                     return {
                         ...character,
@@ -44,7 +45,7 @@ router.get("/", isLoggedIn, (req, res, next) => {
     marvelService
         .getAllCharacters()
         .then(response => {
-            const favCharacters = req.session.currentUser.favCharacters
+            const { favCharacters } = req.session.currentUser
             const characters = response.data.data.results.map(character => {
                 return {
                     ...character,
@@ -60,28 +61,25 @@ router.get("/", isLoggedIn, (req, res, next) => {
 router.post('/', isLoggedIn, (req, res, next) => {
 
     let { charName } = req.body
+    const { _id: userId } = req.session.currentUser
 
     if (charName.includes('%20')) {
         charName.split('%20').join(' ')
     }
 
     User
-        .findById(req.session.currentUser._id)
+        .findById(userId)
         .then(user => {
             if (!user.favCharacters.includes(charName)) {
                 req.session.currentUser.favCharacters.push(charName)
-                User.findByIdAndUpdate(req.session.currentUser._id, { $push: { favCharacters: charName } })
-                    .then(() => res.redirect('/personajes'))
-                    .catch(err => next(err))
+                return User.findByIdAndUpdate(userId, { $push: { favCharacters: charName } })
             } else {
                 const index = req.session.currentUser.favCharacters.indexOf(charName)
                 req.session.currentUser.favCharacters.splice(index, 1)
-                User.findByIdAndUpdate(req.session.currentUser._id, { $pull: { favCharacters: charName } })
-                    .then(() => res.redirect('/personajes'))
-                    .catch(err => next(err))
-
+                return User.findByIdAndUpdate(userId, { $pull: { favCharacters: charName } })
             }
         })
+        .then(() => res.redirect('/personajes'))
         .catch(err => next(err))
 
 })

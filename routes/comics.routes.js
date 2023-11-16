@@ -4,7 +4,7 @@ const router = express.Router()
 const marvelService = require('../services/characters.services')
 const { isLoggedIn } = require('../middleware/route-guard')
 
-
+// TODO OPCIONAL: DESACOPLAR BUSQUEDA
 router.get("/", isLoggedIn, (req, res, next) => {
 
     const { name } = req.query
