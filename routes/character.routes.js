@@ -7,7 +7,8 @@ const {
     getAllCharact,
     getFilteredByName,
     getFilteredBySerie,
-    addFavChar
+    addFavChar,
+    viewDetails
 } = require('../controllers/characters.controller')
 
 router.get("/", isLoggedIn, getAllCharact)
@@ -18,13 +19,6 @@ router.get('/filtroSerie', getFilteredBySerie)
 
 router.post('/', isLoggedIn, addFavChar)
 
-router.get("/detalles", isLoggedIn, (req, res, next) => {
-    const { id } = req.query
-
-    marvelService
-        .getCharacterById(id)
-        .then(character => res.render("characters/detail", character.data.data.results[0]))
-        .catch(err => next(err))
-})
+router.get("/detalles", isLoggedIn, viewDetails)
 
 module.exports = router
