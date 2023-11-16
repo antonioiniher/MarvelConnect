@@ -7,7 +7,6 @@ const User = require('../models/User.model')
 
 
 router.get("/", isLoggedIn, (req, res, next) => {
-
     const { name, serie } = req.query
 
     if (name) {

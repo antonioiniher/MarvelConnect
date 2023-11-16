@@ -15,7 +15,9 @@
 | POST   |`/usuario/:_id/editar`    | Post de la edición de perfil a la DB           |      | 
 | GET    |`/usuario/:_id/eliminar`  | Eliminación del usuario                        |      | 
 | GET    |`/personajes`             | Renderizar a la vista todos los personajes     |      | 
-| POST   |`/personajes`             | Guardar personajes favoritos                   |      | 
+| POST   |`/personajes`             | Guardar personajes favoritos                   |      |
+| GET    |`/series`                 | Renderizar a la vista todos los personajes     |      | 
+| GET    |`/comics`                 | Renderizar a la vista todos los personajes     |      | 
 | GET    |`/eventos`                | Mostrar lista de eventos disponibles           |      | 
 | GET    |`/eventos/crear`          | Página para crear eventos                      |      | 
 | POST   |`/eventos/crear`          | Post de la creación de los eventos a la DB     |      |
@@ -24,6 +26,7 @@
 | GET    |`/eventos/:_id/editar`    | Página para editar eventos                     |      | 
 | POST   |`/eventos/:_id/editar`    | Post de la edición del evento a la DB          |      | 
 | GET    |`/eventos/:_id/eliminar`  | Eliminación de eventos                         |      | 
+| POST   |`/eventos/:_id/apuntarse` | Eliminación de eventos                         |      | 
 | GET    |`/api/events`             | Mapa para eventos                              |  ✅ |  
 | GET    |`/api/events/:_id`        | Mapa para detalle de evento                    |  ✅ |
 

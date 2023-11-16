@@ -18,4 +18,10 @@ module.exports = app => {
     const apiRoutes = require("./api.routes")
     app.use("/api", apiRoutes)
 
+    const comicRoutes = require('./comics.routes')
+    app.use('/comics', comicRoutes)
+
+    const seriesRoutes = require('./series.routes')
+    app.use('/series', seriesRoutes)
+
 }

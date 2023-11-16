@@ -26,18 +26,36 @@
                </li>
                {{/unless}}
                {{#if userId}}
-               <li class="nav-item">
-                  <a class="nav-link" href="/usuario/lista">Lista de usuarios</a>
+               <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                     aria-expanded="false">
+                     Buscador
+                  </a>
+                  <ul class="dropdown-menu">
+                     <li><a class="dropdown-item" href="/personajes">Personajes</a></li>
+                     <li><a class="dropdown-item" href="/series">Series</a></li>
+                     <li><a class="dropdown-item" href="/comics">Comics</a></li>
+                  </ul>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="/personajes">Lista de personajes</a>
+                  <a class="nav-link" href="/usuario/lista">Comunidad</a>
                </li>
                <li class="nav-item">
                   <a class="nav-link" href="/eventos">Lista de eventos</a>
                </li>
             </ul>
-            <li class="nav-item d-flex">
-               <a class="nav-link" href="/usuario/cerrar-sesion">Cerrar Sesion</a>
+            <li class="nav-item dropdown">
+               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  Perfil
+               </a>
+               <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="/usuario/{{userId}}">Mi perfil</a></li>
+                  <li>
+                     <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" href="/usuario/cerrar-sesion">Cerrar Sesion</a></li>
+               </ul>
             </li>
             {{/if}}
          </div>
