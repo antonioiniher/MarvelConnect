@@ -29,7 +29,7 @@ router.get("/detalles", isLoggedIn, (req, res, next) => {
 
     marvelService
         .getSeriesById(id)
-        .then(serie => console.log(serie.data.data.results))
+        .then(serie => res.render("series/detail", serie.data.data.results[0]))
         .catch(err => next(err))
 })
 

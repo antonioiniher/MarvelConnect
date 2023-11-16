@@ -5,7 +5,6 @@ const User = require('./../models/User.model')
 // TODO: WAT
 
 router.get("/", (req, res, next) => {
-
   User
     .findById(req.session.currentUser)
     .then(user => res.render("index", user))
