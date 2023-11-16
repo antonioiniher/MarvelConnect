@@ -7,7 +7,7 @@ const User = require("../models/User.model")
 const date = require('../utils/date')
 
 const { isLoggedIn, checkRole } = require('../middleware/route-guard')
-
+let eventId;
 router.get("/", isLoggedIn, (req, res, next) => {
     Event
         .find()
@@ -53,6 +53,7 @@ router.get("/:event_id", isLoggedIn, (req, res, next) => {
             let eventState = event.participants.some(participante => {
                 return participante._id.toString() === req.session.currentUser._id;
             });
+            eventId = event.id;
             res.render("events/details", {
                 event,
                 littledate,
@@ -66,7 +67,7 @@ router.get("/:event_id", isLoggedIn, (req, res, next) => {
 
 router.get("/:event_id/editar", checkRole('CREATOR', 'ADMIN'), (req, res, next) => {
     let littledate
-    const { event_id } = req.params
+    const { event_id } = eventId;
 
     Event
         .findById(event_id)
@@ -82,7 +83,7 @@ router.get("/:event_id/editar", checkRole('CREATOR', 'ADMIN'), (req, res, next) 
 
 router.post("/:event_id/editar", checkRole('CREATOR', 'ADMIN'), (req, res, next) => {
 
-    const { event_id } = req.params
+    const { event_id } = eventId;
 
     const { name, latitude, longitude, date, imageUrl, description } = req.body
 
