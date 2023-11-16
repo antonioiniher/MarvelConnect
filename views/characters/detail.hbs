@@ -1,1 +1,14 @@
-<h1>holi</h1>
+<div class="row">
+    <div class="col-md-6">
+        <img src="{{thumbnail.path}}.{{thumbnail.extension}}" alt="img">
+    </div>
+    <div class="col-md-6">
+        <p><strong>Nombre: </strong>{{name}}</p>
+        {{#if description}}
+        <p><strong>Descripcion: </strong>{{description}}</p>
+        {{/if}}
+        <p><strong>Comics en los que aparece: </strong>{{comics.available}}</p>
+        <p><strong>Series en los que aparece: </strong>{{series.available}}</p>
+        <p><strong>Stories en los que aparece: </strong>{{stories.available}}</p>
+    </div>
+</div>
