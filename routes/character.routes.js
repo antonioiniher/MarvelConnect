@@ -5,42 +5,8 @@ const marvelService = require('../services/characters.services')
 const { isLoggedIn, checkOwnerOr } = require('../middleware/route-guard')
 const User = require('../models/User.model')
 
-// TODO OPCIONAL: DESACOPLAR RESULTADOS
+
 router.get("/", isLoggedIn, (req, res, next) => {
-
-    const { name, serie } = req.query
-
-    if (name) {
-        marvelService
-            .getCharacterByName(name)
-            .then(response => {
-                const { favCharacters } = req.session.currentUser
-                const characters = response.data.data.results.map(character => {
-                    return {
-                        ...character,
-                        isFav: favCharacters.includes(character.name)
-                    }
-                })
-                res.render('characters/list', { characters })
-            })
-            .catch(err => next(err))
-    }
-
-    if (serie) {
-        marvelService
-            .getCharacterBySerie(serie)
-            .then(response => {
-                const { favCharacters } = req.session.currentUser
-                const characters = response.data.data.results.map(character => {
-                    return {
-                        ...character,
-                        isFav: favCharacters.includes(character.name)
-                    }
-                })
-                res.render('characters/list', { characters })
-            })
-            .catch(err => next(err))
-    }
 
     marvelService
         .getAllCharacters()
@@ -57,6 +23,45 @@ router.get("/", isLoggedIn, (req, res, next) => {
         .catch(err => next(err))
 
 })
+
+router.get('/filtroNombre', (req, res, next) => {
+
+    const { name } = req.query
+
+    marvelService
+        .getCharacterByName(name)
+        .then(response => {
+            const { favCharacters } = req.session.currentUser
+            const characters = response.data.data.results.map(character => {
+                return {
+                    ...character,
+                    isFav: favCharacters.includes(character.name)
+                }
+            })
+            res.render('characters/nameFilteredChar', { characters })
+        })
+        .catch(err => next(err))
+})
+
+router.get('/filtroSerie', (req, res, next) => {
+
+    const { serie } = req.query
+
+    marvelService
+        .getCharacterBySerie(serie)
+        .then(response => {
+            const { favCharacters } = req.session.currentUser
+            const characters = response.data.data.results.map(character => {
+                return {
+                    ...character,
+                    isFav: favCharacters.includes(character.name)
+                }
+            })
+            res.render('characters/serieFilteredChar', { characters })
+        })
+        .catch(err => next(err))
+})
+
 
 router.post('/', isLoggedIn, (req, res, next) => {
 

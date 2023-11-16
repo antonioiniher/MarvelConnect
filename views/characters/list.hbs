@@ -4,7 +4,7 @@
 
         <div class="row mt-3">
             <div class="col-md-5">
-                <form action="/personajes" method="GET">
+                <form action="/personajes/filtroNombre" method="GET">
                     <input type="text" class="form-control" id="name" name="name">
                     <div class="d-grid gap-2 mt-2">
                         <button type="submit" class="btn btn-dark">Buscar por nombre</button>
@@ -13,7 +13,7 @@
             </div>
             <div class="col-md-2"></div>
             <div class="col-md-5">
-                <form action="/personajes" method="GET">
+                <form action="/personajes/filtroSerie" method="GET">
                     <input type="text" class="form-control" id="serie" name="serie">
                     <div class="d-grid gap-2  mt-2">
                         <button type="submit" class="btn btn-dark">Buscar por serie</button>
@@ -24,10 +24,10 @@
 
         <div class="row">
             {{!-- {{#each favArray}} --}}
-            
+
             {{#each characters}}
             <div class="col-md-4 d-flex justify-content-center text-center">
-               
+
                 <div class="card mt-5 char-card" style="width: 18rem;">
 
                     <img src="{{thumbnail.path}}.{{thumbnail.extension}}" class="card-img-top" alt="foto">

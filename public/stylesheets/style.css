@@ -65,8 +65,13 @@ body {
 
 .listBg {
   background-image: url(./../images/fondoBueno.jpg);
-  height: 100vh;
+  background-repeat: repeat-y;
 
+
+}
+
+.nameFilter {
+  margin-bottom: 400px;
 }
 
 .profile {
