@@ -1,0 +1,39 @@
+<div class="listBg text-center">
+    <div class="container pt-5">
+        <h2 style="background-color: black; color: white;">Lista de series</h2>
+
+        <div class="row mt-3">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <form action="/series" method="GET">
+                    <input type="text" class="form-control" id="name" name="name">
+                    <div class="d-grid gap-2 mt-2">
+                        <button type="submit" class="btn btn-dark">Buscar por nombre</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+
+            {{#each series}}
+            <div class="col-md-4 d-flex justify-content-center text-center">
+
+                <div class="card mt-5 char-card" style="width: 18rem;">
+
+                    <img src="{{thumbnail.path}}.{{thumbnail.extension}}" class="card-img-top" alt="foto">
+
+                    <div class="card-body">
+
+                        <h5 class="card-title">{{title}}</h5>
+
+                        <form action="/series" method="get">
+                            <button type="submit" name="id" value="{{id}}" class="btn btn-dark">Detalles</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>

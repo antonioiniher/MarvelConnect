@@ -23,6 +23,24 @@ class MarvelService {
         return this.axiosApp.get(`/series?titleStartsWith=${serie}&ts=${timestamp}&apikey=${apiKey}&hash=${hashValue}`)
     }
 
+    getAllSeries() {
+        return this.axiosApp.get(`/series?limit=75&ts=${timestamp}&apikey=${apiKey}&hash=${hashValue}`)
+    }
+    getSeriesByName(name) {
+        return this.axiosApp.get(`/series?titleStartsWith=${name}&ts=${timestamp}&apikey=${apiKey}&hash=${hashValue}`)
+    }
+
+    getSeriesById(id) {
+        return this.axiosApp.get(`/series/${id}?&ts=${timestamp}&apikey=${apiKey}&hash=${hashValue}`)
+    }
+
+    getAllComics() {
+        return this.axiosApp.get(`/comics?limit=75&ts=${timestamp}&apikey=${apiKey}&hash=${hashValue}`)
+    }
+    getComicsByName(name) {
+        return this.axiosApp.get(`/comics?titleStartsWith=${name}&ts=${timestamp}&apikey=${apiKey}&hash=${hashValue}`)
+    }
+
 }
 
 
