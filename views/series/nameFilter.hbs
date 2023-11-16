@@ -2,18 +2,6 @@
     <div class="container pt-5">
         <h2 style="background-color: black; color: white;">Lista de series</h2>
 
-        <div class="row mt-3">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
-                <form action="/series/resultados" method="GET">
-                    <input type="text" class="form-control" id="name" name="name">
-                    <div class="d-grid gap-2 mt-2">
-                        <button type="submit" class="btn btn-dark">Buscar por nombre</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-
         <div class="row">
 
             {{#each series}}
@@ -27,7 +15,7 @@
 
                         <h5 class="card-title">{{title}}</h5>
 
-                        <form action="/series/detalles" method="get">
+                        <form action="/series/detail" method="get">
                             <button type="submit" name="id" value="{{id}}" class="btn btn-dark">Detalles</button>
                         </form>
                     </div>
