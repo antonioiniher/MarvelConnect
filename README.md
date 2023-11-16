@@ -13,9 +13,11 @@
 | GET    |`/usuario/:_id/creator`   | Página para ver el perfil de otro usuario      |      | 
 | GET    |`/usuario/:_id/editar`    | Página para editar el perfil de usuario        |      | 
 | POST   |`/usuario/:_id/editar`    | Post de la edición de perfil a la DB           |      | 
-| GET    |`/usuario/:_id/eliminar`  | Eliminación del usuario                        |      | 
+| POST   |`/usuario/:_id/eliminar`  | Eliminación del usuario                        |      | 
 | GET    |`/personajes`             | Renderizar a la vista todos los personajes     |      | 
 | POST   |`/personajes`             | Guardar personajes favoritos                   |      |
+| POST   |`/personajes/filtroNombre`| Filtra personajes por nombre                   |      |
+| POST   |`/personajes/filtroSerie` | Filtra personajes por serie                    |      |
 | GET    |`/personajes/detalles`    | Renderizar los detalles de un personaje        |      | 
 | GET    |`/series`                 | Renderizar a la vista todos los personajes     |      |
 | GET    |`/series/detalles`        | Renderizar los detalles de una serie           |      | 
