@@ -43,6 +43,10 @@ class MarvelService {
         return this.axiosApp.get(`/comics?titleStartsWith=${name}`)
     }
 
+    getComicsById(id) {
+        return this.axiosApp.get(`/comics/${id}`)
+    }
+
 }
 
 

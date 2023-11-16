@@ -27,4 +27,13 @@ router.get("/", isLoggedIn, (req, res, next) => {
 
 })
 
+router.get("/detalles", isLoggedIn, (req, res, next) => {
+    const { id } = req.query
+
+    marvelService
+        .getComicsById(id)
+        .then(comic => res.render("comics/detail", comic.data.data.results[0]))
+        .catch(err => next(err))
+})
+
 module.exports = router
