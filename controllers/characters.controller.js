@@ -82,10 +82,20 @@ const addFavChar = (req, res, next) => {
 
 }
 
+const viewDetails = (req, res, next) => {
+    const { id } = req.query
+
+    marvelService
+        .getCharacterById(id)
+        .then(character => res.render("characters/detail", character.data.data.results[0]))
+        .catch(err => next(err))
+}
+
 
 module.exports = {
     getAllCharact,
     getFilteredByName,
     getFilteredBySerie,
-    addFavChar
+    addFavChar,
+    viewDetails
 }

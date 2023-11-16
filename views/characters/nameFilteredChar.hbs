@@ -8,13 +8,10 @@
 
             <div class="col-md-4 d-flex justify-content-center text-center">
 
-<<<<<<< HEAD
                 <div class="card mt-5 char-card" style="width: 18rem;">
 
                     <img src="{{thumbnail.path}}.{{thumbnail.extension}}" class="card-img-top" alt="foto">
-
                     <div class="card-body">
-
                         <h5 class="card-title">{{name}}</h5>
                         {{#if isFav}}
                         <form action="/personajes" method="POST">
@@ -28,30 +25,13 @@
                                 favoritos</button>
                         </form>
                         {{/unless}}
+                        <form action="/personajes/detalles" method="get">
+                            <button type="submit" name="id" value="{{id}}" class="btn btn-dark mt-2">Detalles</button>
+                        </form>
                     </div>
-=======
-                <div class="card-body">
-                    <h5 class="card-title">{{name}}</h5>
-                    {{#if isFav}}
-                    <form action="/personajes" method="POST">
-                        <button type="submit" value="{{name}}" class="btn btn-dark" name="charName">Quitar de
-                            favoritos</button>
-                    </form>
-                    {{/if}}
-                    {{#unless isFav}}
-                    <form action="/personajes" method="POST">
-                        <button type="submit" value="{{name}}" class="btn btn-dark" name="charName">Añadir a
-                            favoritos</button>
-                    </form>
-                    {{/unless}}
-                    <form action="/personajes/detalles" method="get">
-                        <button type="submit" name="id" value="{{id}}" class="btn btn-dark mt-2">Detalles</button>
-                    </form>
->>>>>>> 72ef54342305f1cb774865c0e605286f026cd4ec
                 </div>
             </div>
             {{/each}}
         </div>
     </div>
-</div>
 </div>

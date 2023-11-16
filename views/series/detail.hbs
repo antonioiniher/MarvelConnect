@@ -1,15 +1,20 @@
-<div class="row">
-    <div class="col-md-6">
-        <img src="{{thumbnail.path}}.{{thumbnail.extension}}" alt="img">
-    </div>
-    <div class="col-md-6">
-        <p>Titulo: {{title}}</p>
-        <p>Publicación: {{startYear}}-{{endYear}}</p>
-        {{#if description}}
-        <p>Descripcion: {{description}}</p>
-        {{/if}}
-        {{#if characters.available}}
-        <p>Nº de personajes: {{characters.available}}</p>
-        {{/if}}
+<div class="profile">
+    <div class="container  fondoblanco2">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-6 text-center pt-3">
+                <img src="{{thumbnail.path}}.{{thumbnail.extension}}" alt="img">
+            </div>
+            <div class="col-md-6 info">
+                <p>Titulo: {{title}}</p>
+                <p>Publicación: {{startYear}}-{{endYear}}</p>
+                {{#if description}}
+                <p>Descripcion: {{description}}</p>
+                {{/if}}
+                {{#if characters.available}}
+                <p>Nº de personajes: {{characters.available}}</p>
+                {{/if}}
+            </div>
+        </div>
+
     </div>
 </div>

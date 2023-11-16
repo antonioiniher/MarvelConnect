@@ -1,51 +1,50 @@
 <div class="fondoLista">
-    <h1 class="h1List">Lista de eventos</h1>
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div id="carouselExampleCaptions" class="carousel slide">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="https://i0.wp.com/www.tomosygrapas.com/wp-content/uploads/2019/06/nocompromise-nomercy-blade.jpg?ssl=1"
-                            class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block ">
-                            <h5>EVENTAZO!</h5>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus aperiam perferendisllo
-                                enim at expedita.</p>
+    <div class="container pt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h2 class="h1List">Lista de eventos</h2>
+                <div id="carouselExampleCaptions" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="https://i0.wp.com/www.tomosygrapas.com/wp-content/uploads/2019/06/nocompromise-nomercy-blade.jpg?ssl=1"
+                                class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block ">
+                                <h5>EVENTAZO!</h5>
+                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus aperiam
+                                    perferendisllo
+                                    enim at expedita.</p>
+                            </div>
                         </div>
-                    </div>
-                    {{#each events}}
-                    <div class="carousel-item">
-                        <img src="{{imageUrl}}" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h2>{{name}}</h2>
-                            <a href="/eventos/{{id}}" class="btn btn-dark">Ver Detalles</a>
+                        {{#each events}}
+                        <div class="carousel-item">
+                            <img src="{{imageUrl}}" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h2>{{name}}</h2>
+                                <a href="/eventos/{{id}}" class="btn btn-dark">Ver Detalles</a>
+                            </div>
                         </div>
+                        {{/each}}
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
                     </div>
-                    {{/each}}
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
                 </div>
             </div>
         </div>
+        {{#if isAdminOrCreator}}
+        <a href="/eventos/crear" class="btn btn-dark createEventbtn">Crear Evento</a>
+        {{/if}}
+        <h1 class="h1List mt-5">Encuentra tu evento</h1>
+        <figure id="myMap"></figure>
     </div>
-
-    <h1 class="h1List">Encuentra tu evento</h1>
-    <figure id="myMap"></figure>
-
-    {{#if isAdminOrCreator}}
-    <a href="/eventos/crear" class="btn btn-dark createEventbtn mb-5">Crear Evento</a>
-    {{/if}}
 </div>
-
-
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="/js/places-map.js"></script>
 <script
