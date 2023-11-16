@@ -25,6 +25,10 @@ class MarvelService {
         return this.axiosApp.get(`/series?titleStartsWith=${serie}`)
     }
 
+    getCharacterById(id) {
+        return this.axiosApp.get(`/characters/${id}`)
+    }
+
     getAllSeries() {
         return this.axiosApp.get(`/series?limit=75`)
     }
@@ -48,9 +52,6 @@ class MarvelService {
     }
 
 }
-
-
-
 
 const marvelService = new MarvelService()
 

@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const { getApiEvents, getOneApiEvent } = require('../controllers/api.controllers')
+const { getApiEvents, getOneApiEvent } = require('../controllers/api.controller') 
 
 router.get("/events", getApiEvents)
 

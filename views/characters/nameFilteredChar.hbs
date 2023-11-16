@@ -10,7 +10,6 @@
                 <img src="{{thumbnail.path}}.{{thumbnail.extension}}" class="card-img-top" alt="foto">
 
                 <div class="card-body">
-
                     <h5 class="card-title">{{name}}</h5>
                     {{#if isFav}}
                     <form action="/personajes" method="POST">
@@ -24,6 +23,9 @@
                             favoritos</button>
                     </form>
                     {{/unless}}
+                    <form action="/personajes/detalles" method="get">
+                        <button type="submit" name="id" value="{{id}}" class="btn btn-dark">Detalles</button>
+                    </form>
                 </div>
             </div>
         </div>
