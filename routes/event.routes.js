@@ -7,10 +7,7 @@ const User = require("../models/User.model")
 const dateUtils = require('../utils/date')
 
 const { isLoggedIn, checkRole } = require('../middleware/route-guard')
-// let eventId;
 
-// TODO: RED POINTS
-// TODO: RESOLVER CATCH CON NEXT
 router.get("/", isLoggedIn, (req, res, next) => {
     Event
         .find()
@@ -20,14 +17,14 @@ router.get("/", isLoggedIn, (req, res, next) => {
                 isAdminOrCreator: req.session.currentUser.role === 'ADMIN' || req.session.currentUser.role === 'CREATOR'
             })
         })
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 })
 
 router.get("/crear", checkRole('CREATOR', 'ADMIN'), (req, res, next) => {
     User
         .find({ "role": { $in: ["CREATOR", "ADMIN"] } })
         .then(users => res.render("events/create-event", { users }))
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 })
 
 router.post("/crear", checkRole('CREATOR', 'ADMIN'), (req, res, next) => {
@@ -42,7 +39,7 @@ router.post("/crear", checkRole('CREATOR', 'ADMIN'), (req, res, next) => {
     Event
         .create({ name, place, date, imageUrl, description, creator })
         .then(() => res.redirect("/eventos"))
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 
 })
 
@@ -52,35 +49,32 @@ router.get("/:event_id", isLoggedIn, (req, res, next) => {
         .findById(event_id)
         .populate("participants")
         .then(event => {
-            let littledate = dateUtils.formatDate(event.date)
+            const formattedDate = event.date ? dateUtils.formatDate(event.date) : undefined
             let eventState = event.participants.some(participante => {
                 return participante._id.toString() === req.session.currentUser._id;
             });
-            // eventId = event.id;
             res.render("events/details", {
                 event,
-                littledate,
+                formattedDate,
                 eventState,
                 isAdminOrCreator: req.session.currentUser.role === 'ADMIN' || req.session.currentUser.role === 'CREATOR',
                 isAdmin: req.session.currentUser.role === 'ADMIN'
             })
         })
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 })
 
 router.get("/:event_id/editar", checkRole('CREATOR', 'ADMIN'), (req, res, next) => {
-    let littledate
+
     const { event_id } = req.params;
 
     Event
         .findById(event_id)
         .then(event => {
-            if (event.date) {
-                littledate = dateUtils.formatDate(event.date)
-            }
-            res.render("events/edit", { event, littledate })
+            const formattedDate = event.date ? dateUtils.formatDate(event.date) : undefined
+            res.render("events/edit", { event, formattedDate })
         })
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 
 })
 
@@ -98,7 +92,7 @@ router.post("/:event_id/editar", checkRole('CREATOR', 'ADMIN'), (req, res, next)
     Event
         .findByIdAndUpdate(event_id, { name, place, date, imageUrl, description })
         .then(() => res.redirect("/eventos"))
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 
 })
 
@@ -109,7 +103,7 @@ router.post("/:event_id/eliminar", checkRole('ADMIN'), (req, res, next) => {
     Event
         .findByIdAndDelete(event_id)
         .then(() => res.redirect("/eventos"))
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 
 })
 
@@ -125,7 +119,7 @@ router.post("/:event_id/apuntarse", (req, res, next) => {
             return Event.findByIdAndUpdate(event_id, query);
         })
         .then(() => res.redirect(`/eventos/${event_id}`))
-        .catch(err => console.log(err));
+        .catch(err => next(err));
 })
 
 module.exports = router

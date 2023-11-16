@@ -7,7 +7,6 @@ const updateUserInfo = (req, res, next) => {
     next()
 }
 
-
 module.exports = {
     updateUserInfo
 }

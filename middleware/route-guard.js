@@ -1,4 +1,5 @@
 const isLoggedIn = (req, res, next) => {
+
     if (req.session.currentUser) {
         next()
     }
@@ -7,7 +8,6 @@ const isLoggedIn = (req, res, next) => {
     }
 
 }
-
 const checkRole = (...admittedRoles) => (req, res, next) => {
 
     const { role } = req.session.currentUser
@@ -18,6 +18,7 @@ const checkRole = (...admittedRoles) => (req, res, next) => {
     else {
         res.redirect('/usuario/inicio-sesion')
     }
+
 }
 
 const checkOwnerOr = (...admittedRoles) => (req, res, next) => {
@@ -30,6 +31,7 @@ const checkOwnerOr = (...admittedRoles) => (req, res, next) => {
     } else {
         res.redirect('/usuario/inicio-sesion')
     }
+
 }
 
 

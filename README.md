@@ -29,6 +29,3 @@
 | POST   |`/eventos/:_id/apuntarse` | Eliminación de eventos                         |      | 
 | GET    |`/api/events`             | Mapa para eventos                              |  ✅ |  
 | GET    |`/api/events/:_id`        | Mapa para detalle de evento                    |  ✅ |
-
--->Quitar imagenes not found
--->Arreglar personajes favoritos +-

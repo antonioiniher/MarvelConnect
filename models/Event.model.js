@@ -4,7 +4,7 @@ const eventSchema = new Schema(
     {
         name: {
             type: String,
-            required: true,
+            required: [true, 'El nombre es obligatorio.']
         },
         place: {
             type: {
@@ -12,20 +12,19 @@ const eventSchema = new Schema(
             },
             coordinates: {
                 type: [Number],
-                required: true
             },
         },
         date: {
             type: Date,
-            required: true,
+            required: [true, 'El nombre de usuario es obligatorio.']
         },
         imageUrl: {
             type: String,
-            required: true
+            required: [true, 'La imagen es obligatoria.']
         },
         description: {
             type: String,
-            minLength: 10,
+            minLength: [10, 'Mínimo 10 caracteres.']
         },
         creator: {
             type: Schema.Types.ObjectId,
@@ -41,7 +40,7 @@ const eventSchema = new Schema(
     }
 )
 
-eventSchema.index({ location: '2dsphere' })
+eventSchema.index({ place: '2dsphere' })
 const Event = model("Event", eventSchema)
 
 module.exports = Event

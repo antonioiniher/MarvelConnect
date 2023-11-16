@@ -27,12 +27,12 @@
                     </div>
                     <div class="mb-3">
                         <label for="birthday" class="form-label">Fecha de nacimiento</label>
-                        <input type="date" class="form-control" id="birthday" name="birthday" value="{{littledate}}">
+                        <input type="date" class="form-control" id="birthday" name="birthday" value="{{formattedDate}}">
                     </div>
-                    <p>{{formatDate}}</p>
                     <div class="mb-3">
                         <label for="description" class="form-label">Descripción!</label>
-                        <textarea class="form-control" id="description" name="description">{{user.description}}</textarea>
+                        <textarea class="form-control" id="description"
+                            name="description">{{user.description}}</textarea>
                     </div>
                     <div class="d-grid gap-2">
                         <button type="submit" class="btn btn-dark">Editar Perfil</button>
