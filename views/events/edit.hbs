@@ -9,14 +9,10 @@
                         <input type="text" class="form-control" id="name" name="name" value="{{event.name}}">
                     </div>
                     <div class="mb-3">
-                        <label for="latitude" class="form-label">Latitud</label>
-                        <input type="text" class="form-control" id="latitude" name="latitude"
-                            value="{{event.place.coordinates.[1]}}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="longitude" class="form-label">Longitud</label>
-                        <input type="text" class="form-control" id="longitude" name="longitude"
-                            value="{{event.place.coordinates.[0]}}">
+                        <label for="location" class="form-label">Lugar</label>
+                        <input type="text" class="form-control" id="location">
+                        <input type="hidden" id="latitude" name="latitude">
+                        <input type="hidden" id="longitude" name="longitude">
                     </div>
                     <div class=" mb-3">
                         <label for="date" class="form-label">Fecha del evento</label>
@@ -39,3 +35,7 @@
         </div>
     </div>
 </div>
+
+<script src="/js/place-autocomplete.js"></script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyB8pH6zIEOvvWQHRCqRVHiaspZ_KM6yDI8&callback=initialize"></script>

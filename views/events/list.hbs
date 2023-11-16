@@ -1,5 +1,5 @@
 <div class="fondoLista">
-    <h2 class="h1List">Lista de eventos</h2>
+    <h1 class="h1List">Lista de eventos</h1>
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div id="carouselExampleCaptions" class="carousel slide">
@@ -37,13 +37,12 @@
         </div>
     </div>
 
-    {{#if isAdminOrCreator}}
-    <a href="/eventos/crear" class="btn btn-dark createEventbtn">Crear Evento</a>
-    {{/if}}
-
     <h1 class="h1List">Encuentra tu evento</h1>
-
     <figure id="myMap"></figure>
+
+    {{#if isAdminOrCreator}}
+    <a href="/eventos/crear" class="btn btn-dark createEventbtn mb-5">Crear Evento</a>
+    {{/if}}
 </div>
 
 
