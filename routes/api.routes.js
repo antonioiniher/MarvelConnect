@@ -4,13 +4,11 @@ const router = express.Router()
 const Event = require("../models/Event.model")
 
 
-// TODO: GESTIONAFD CATCH CON ESTADO Y JSON
-
 router.get("/events", (req, res) => {
     Event
         .find()
         .then(events => res.json(events))
-        .catch(err => console.log(err))
+        .catch(err => res.status(500).json({ message: 'Server issue', errorDetails: err }))
 })
 
 router.get("/events/:id", (req, res) => {
@@ -18,7 +16,7 @@ router.get("/events/:id", (req, res) => {
     Event
         .findById(id)
         .then(events => res.json(events))
-        .catch(err => console.log(err))
+        .catch(err => res.status(500).json({ message: 'Server issue', errorDetails: err }))
 })
 
 
