@@ -65,6 +65,7 @@ body {
 
 .listBg {
   background-image: url(./../images/fondoBueno.jpg);
+  height: 100vh;
 
 }
 

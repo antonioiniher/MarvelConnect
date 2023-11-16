@@ -5,21 +5,22 @@ const marvelService = require('../services/characters.services')
 const { isLoggedIn } = require('../middleware/route-guard')
 
 
-// TODO: DESACOPLAR RESULTADOS
 router.get("/", isLoggedIn, (req, res, next) => {
-
-    const { name } = req.query
-
-    if (name) {
-        marvelService
-            .getSeriesByName(name)
-            .then(response => res.render('series/list', { series: response.data.data.results }))
-            .catch(err => next(err))
-    }
 
     marvelService
         .getAllSeries()
         .then(response => res.render('series/list', { series: response.data.data.results }))
+        .catch(err => next(err))
+
+})
+
+router.get("/resultados", isLoggedIn, (req, res, next) => {
+
+    const { name } = req.query
+
+    marvelService
+        .getSeriesByName(name)
+        .then(response => res.render('series/nameFilter', { series: response.data.data.results }))
         .catch(err => next(err))
 
 })
@@ -29,7 +30,7 @@ router.get("/detalles", isLoggedIn, (req, res, next) => {
 
     marvelService
         .getSeriesById(id)
-        .then(serie => console.log(serie.data.data.results))
+        .then(serie => res.render("series/detail", serie.data.data.results[0]))
         .catch(err => next(err))
 })
 
