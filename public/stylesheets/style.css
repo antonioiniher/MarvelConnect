@@ -115,16 +115,12 @@ body {
   text-align: center;
   padding: 40px;
   color: white;
-
 }
 
 .fondoLista {
   background-image: url(./../images/fondoBueno.jpg);
   background-position: top;
   background-size: cover;
-
-
-
 }
 
 .createEventbtn {
@@ -135,7 +131,6 @@ body {
 .bgeventdetails {
   background-image: url(./../images/fondoBueno.jpg);
   background-position: top;
-
   background-size: cover;
   height: 100vh;
 }

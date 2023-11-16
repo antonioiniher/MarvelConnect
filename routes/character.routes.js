@@ -13,33 +13,52 @@ router.get("/", isLoggedIn, (req, res, next) => {
     if (name) {
         marvelService
             .getCharacterByName(name)
-            .then(response => res.render('characters/list', { characters: response.data.data.results }))
+            .then(response => {
+                const favCharacters = req.session.currentUser.favCharacters
+                const characters = response.data.data.results.map(character => {
+                    return {
+                        ...character,
+                        isFav: favCharacters.includes(character.name)
+                    }
+                })
+                res.render('characters/list', { characters })
+            })
             .catch(err => next(err))
     }
 
     if (serie) {
         marvelService
             .getCharacterBySerie(serie)
-            .then(response => res.render('characters/list', { characters: response.data.data.results }))
+            .then(response => {
+                const favCharacters = req.session.currentUser.favCharacters
+                const characters = response.data.data.results.map(character => {
+                    return {
+                        ...character,
+                        isFav: favCharacters.includes(character.name)
+                    }
+                })
+                res.render('characters/list', { characters })
+            })
             .catch(err => next(err))
     }
 
     marvelService
         .getAllCharacters()
         .then(response => {
-            const favArray = response.data.data.results.map(e => {
-                return req.session.currentUser.favCharacters.includes(e.name) ? true : false
+            const favCharacters = req.session.currentUser.favCharacters
+            const characters = response.data.data.results.map(character => {
+                return {
+                    ...character,
+                    isFav: favCharacters.includes(character.name)
+                }
             })
-            res.render('characters/list', {
-                characters: response.data.data.results,
-                favArray
-            })
+            res.render('characters/list', { characters })
         })
         .catch(err => next(err))
 
 })
 
-router.post('/', (req, res, next) => {
+router.post('/', isLoggedIn, (req, res, next) => {
 
     let { charName } = req.body
 
@@ -51,10 +70,13 @@ router.post('/', (req, res, next) => {
         .findById(req.session.currentUser._id)
         .then(user => {
             if (!user.favCharacters.includes(charName)) {
+                req.session.currentUser.favCharacters.push(charName)
                 User.findByIdAndUpdate(req.session.currentUser._id, { $push: { favCharacters: charName } })
                     .then(() => res.redirect('/personajes'))
                     .catch(err => next(err))
             } else {
+                const index = req.session.currentUser.favCharacters.indexOf(charName)
+                req.session.currentUser.favCharacters.splice(index, 1)
                 User.findByIdAndUpdate(req.session.currentUser._id, { $pull: { favCharacters: charName } })
                     .then(() => res.redirect('/personajes'))
                     .catch(err => next(err))

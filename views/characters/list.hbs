@@ -32,11 +32,18 @@
                     <div class="card-body">
 
                         <h5 class="card-title">{{name}}</h5>
-
+                        {{#if isFav}}
+                        <form action="/personajes" method="POST">
+                            <button type="submit" value="{{name}}" class="btn btn-dark" name="charName">Quitar de
+                                favoritos</button>
+                        </form>
+                        {{/if}}
+                        {{#unless isFav}}
                         <form action="/personajes" method="POST">
                             <button type="submit" value="{{name}}" class="btn btn-dark" name="charName">Añadir a
                                 favoritos</button>
                         </form>
+                        {{/unless}}
                     </div>
                 </div>
             </div>
