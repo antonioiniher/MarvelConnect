@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 const marvelService = require('../services/characters.services')
-const { isLoggedIn, checkOwnerOr } = require('../middleware/route-guard')
+const { isLoggedIn } = require('../middleware/route-guard')
 const User = require('../models/User.model')
 
 
@@ -24,7 +24,7 @@ router.get("/", isLoggedIn, (req, res, next) => {
 
 })
 
-router.get('/filtroNombre', (req, res, next) => {
+router.get('/filtroNombre', isLoggedIn, (req, res, next) => {
 
     const { name } = req.query
 
@@ -41,9 +41,10 @@ router.get('/filtroNombre', (req, res, next) => {
             res.render('characters/nameFilteredChar', { characters })
         })
         .catch(err => next(err))
+
 })
 
-router.get('/filtroSerie', (req, res, next) => {
+router.get('/filtroSerie', isLoggedIn, (req, res, next) => {
 
     const { serie } = req.query
 
@@ -60,6 +61,7 @@ router.get('/filtroSerie', (req, res, next) => {
             res.render('characters/serieFilteredChar', { characters })
         })
         .catch(err => next(err))
+
 })
 
 
