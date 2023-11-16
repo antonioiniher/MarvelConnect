@@ -112,10 +112,11 @@ body {
 
 #myMap {
   height: 50vh;
-  width: 800px;
+  width: 600px;
   margin: auto;
-}
+  border-radius: 10px;
 
+}
 
 .h1List {
   text-align: center;
@@ -139,6 +140,17 @@ body {
   background-position: top;
   background-size: cover;
   height: 100vh;
+}
+
+.details {
+  padding-top: 60px;
+}
+
+.bgeventdetails h2,
+p,
+li {
+  color: white;
+
 }
 
 .char-card img {

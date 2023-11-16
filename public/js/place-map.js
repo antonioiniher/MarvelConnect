@@ -11,7 +11,7 @@ function init() {
 
 function renderMap() {
     myMap = new google.maps.Map(document.querySelector("#myMap"), {
-        zoom: 13,
+        zoom: 10,
         center: ironhackCoords
     })
 }
