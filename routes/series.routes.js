@@ -24,11 +24,12 @@ router.get("/", isLoggedIn, (req, res, next) => {
 
 })
 
-router.get("/id", isLoggedIn, (req, res, next) => {
+router.get("/detalles", isLoggedIn, (req, res, next) => {
     const { id } = req.query
+
     marvelService
         .getSeriesById(id)
-        .then(serie => res.render("series/detail", serie))
+        .then(serie => console.log(serie.data.data.results))
         .catch(err => next(err))
 })
 
