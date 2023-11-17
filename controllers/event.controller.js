@@ -46,7 +46,7 @@ const getEventDetails = (req, res, next) => {
         .then(event => {
             const formattedDate = event.date ? dateUtils.formatDate(event.date) : undefined
             let eventState = event.participants.some(participante => {
-                return participante._id.toString() === req.session.currentUser._id;
+                return participante._id.toString() === req.session.currentUser._id
             });
             res.render("events/details", {
                 event,
@@ -61,7 +61,7 @@ const getEventDetails = (req, res, next) => {
 
 const getEditEvent = (req, res, next) => {
 
-    const { event_id } = req.params;
+    const { event_id } = req.params
 
     Event
         .findById(event_id)
@@ -75,7 +75,7 @@ const getEditEvent = (req, res, next) => {
 
 const postEditEvent = (req, res, next) => {
 
-    const { event_id } = eventId;
+    const { event_id } = eventId
 
     const { name, latitude, longitude, date, imageUrl, description } = req.body
 
@@ -111,7 +111,7 @@ const joinEvent = (req, res, next) => {
 
             const query = !event.participants.includes(currentUserID) ? { $push: { participants: currentUserID } } : { $pull: { participants: currentUserID } }
 
-            return Event.findByIdAndUpdate(event_id, query);
+            return Event.findByIdAndUpdate(event_id, query)
         })
         .then(() => res.redirect(`/eventos/${event_id}`))
         .catch(err => next(err))

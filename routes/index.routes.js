@@ -5,7 +5,7 @@ const User = require('./../models/User.model')
 router.get("/", (req, res, next) => {
 
   User
-    .findById(req.session.currentUser._id)
+    .findById(req.session.currentUser)
     .then(user => res.render("index", user))
     .catch(err => next(err))
 
